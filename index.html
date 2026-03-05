@@ -31,7 +31,6 @@
       margin:40px auto;
       background:#fff;
     
-      /* ✅ deja espacio para el header “tipo Word” */
       padding:3.6cm 2cm 2.5cm;
     
       box-sizing:border-box;
@@ -41,7 +40,6 @@
       box-shadow:none;
     }
     
-    /* ✅ HEADER REAL (arriba, fuera del flujo) */
     .doc-header{
       position:absolute;
       top:1.2cm;
@@ -49,7 +47,7 @@
       right:2cm;
     
       margin:0;
-      opacity:.78;     /* ✅ menos sólido */
+      opacity:.78;
     }
     
     /* tu layout actual sirve */
@@ -110,7 +108,7 @@
     }
 
     /* =======================
-       FIRMA (IMAGEN)
+       FIRMA
     ======================= */
     .firma{
       margin-top: 46px;
@@ -160,7 +158,7 @@
     }
 
     /* =======================
-       UI FORMULARIO (SIN CAMBIOS)
+       UI FORMULARIO
     ======================= */
     .app-bar{
       max-width:780px;
@@ -410,6 +408,18 @@
             <input id="CREDITOS_5" type="text" placeholder="Crédito 5">
           </div>
         </div>
+<div class="field" style="grid-column: span 2;">
+  <label class="mini-label">JUDICIAL</label>
+  <div style="display:flex; align-items:center; gap:10px;">
+    <input id="JUDICIAL" type="checkbox" />
+    <span style="font-size:13px; color:#444;">Activar expediente judicial</span>
+  </div>
+</div>
+
+<div class="field hidden" id="EXPEDIENTE_FIELD" style="grid-column: span 2;">
+  <label for="EXPEDIENTE">Nº de expediente</label>
+  <input id="EXPEDIENTE" type="text" value="" placeholder="Ingresa Nº de expediente">
+</div>
       </div>
 
       <div class="actions">
@@ -448,7 +458,7 @@
         Por medio de la presente, le informamos que EXPÉRTIS MASTER SERVICER AND COLLECTIONS S.A.C., identificada con R.U.C. Nº 20600558481, con domicilio en Av. Circunvalación del Club Golf Los Incas N°154 - Oficina 403, distrito de Santiago de Surco, provincia y departamento de Lima, debidamente representada por Nathaly Isabel Jimenez Quispe según poderes inscritos en la partida N° 13459121, ha adquirido los derechos de la cartera de crédito otorgado por {{ENTIDAD}}, con base en el contrato de transferencia de cartera suscrito el {{FECHA_CASTIGO}}.
       </p>
       <p>
-        Al respecto informamos que {{singular}}el{{/singular}}{{plural}}los{{/plural}} {{singular}}crédito{{/singular}}{{plural}}créditos{{/plural}} {{CREDITOS}} {{singular}}correspondiente{{/singular}}{{plural}}correspondientes{{/plural}} al Sr.(a) {{NOMBRE}}, identificado(a) con DNI N° {{DNI}}, {{singular}}ha{{/singular}} {{plural}}han{{/plural}} sido {{singular}}cancelado{{/singular}} {{plural}}cancelados{{/plural}} en su totalidad el día {{FECHA_PAGO}}, no existiendo a la fecha saldo pendiente de pago, por lo que se da por cancelada la deuda. Cabe mencionar que si {{singular}}el{{/singular}} {{plural}}los{{/plural}} {{singular}}crédito{{/singular}} {{plural}}créditos{{/plural}} en mención {{singular}}cuenta{{/singular}} {{plural}}cuentan{{/plural}} con un proceso judicial será responsabilidad única y exclusivamente del cliente asumir y realizar de manera total con todas las gestiones y los gastos notariales, registrales, tributarios y otros pertinentes que originen la formalización de la conclusión del proceso judicial, levantamiento de embargo y/o levantamiento de hipoteca¹.
+        Al respecto informamos que {{singular}}el{{/singular}}{{plural}}los{{/plural}} {{singular}}crédito{{/singular}}{{plural}}créditos{{/plural}} {{CREDITOS}} {{singular}}correspondiente{{/singular}}{{plural}}correspondientes{{/plural}} al Sr.(a) {{NOMBRE}}, identificado(a) con DNI N° {{DNI}}, {{judicial}}anexado al Nº de expediente {{EXPEDIENTE}}{{/judicial}} {{singular}}ha{{/singular}} {{plural}}han{{/plural}} sido {{singular}}cancelado{{/singular}} {{plural}}cancelados{{/plural}} en su totalidad el día {{FECHA_PAGO}}, no existiendo a la fecha saldo pendiente de pago, por lo que se da por cancelada la deuda. Cabe mencionar que si {{singular}}el{{/singular}} {{plural}}los{{/plural}} {{singular}}crédito{{/singular}} {{plural}}créditos{{/plural}} en mención {{singular}}cuenta{{/singular}} {{plural}}cuentan{{/plural}} con un proceso judicial será responsabilidad única y exclusivamente del cliente asumir y realizar de manera total con todas las gestiones y los gastos notariales, registrales, tributarios y otros pertinentes que originen la formalización de la conclusión del proceso judicial, levantamiento de embargo y/o levantamiento de hipoteca¹.
       </p>
       <p>
         Se expide en Lima el {{FECHA_HOY}}, y se imprimió en Lima el {{FECHA_HOY}}.
@@ -479,29 +489,25 @@
   </template>
 
 <script>
-  const placeholders = ["CREDITOS", "DNI", "ENTIDAD", "FECHA_CASTIGO", "FECHA_HOY", "FECHA_PAGO", "NOMBRE"];
-  const creditosCount = document.getElementById('CREDITOS_COUNT');
-  const creditosContainer = document.getElementById('CREDITOS_CONTAINER');
-  const panelFormulario = document.getElementById('panelFormulario');
-  const panelCarta = document.getElementById('panelCarta');
-  const renderCarta = document.getElementById('renderCarta');
-  const tplCarta = document.getElementById('tplCarta');
-  const btnEditar = document.getElementById('btnEditar');
-  const form = document.getElementById('formCarta');
-  const MONTHS_ES = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Setiembre','Octubre','Noviembre','Diciembre'];
+    const placeholders = ["CREDITOS", "DNI", "ENTIDAD", "EXPEDIENTE", "FECHA_CASTIGO", "FECHA_HOY", "FECHA_PAGO", "NOMBRE"];
+    const creditosCount = document.getElementById('CREDITOS_COUNT');
+    const creditosContainer = document.getElementById('CREDITOS_CONTAINER');
+    const panelFormulario = document.getElementById('panelFormulario');
+    const panelCarta = document.getElementById('panelCarta');
+    const renderCarta = document.getElementById('renderCarta');
+    const tplCarta = document.getElementById('tplCarta');
+    const btnEditar = document.getElementById('btnEditar');
+    const btnImprimir = document.getElementById('btnImprimir');
+    const form = document.getElementById('formCarta');
+    const MONTHS_ES = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Setiembre','Octubre','Noviembre','Diciembre'];
   
   function showForm() {
     panelFormulario.classList.remove('hidden');
     panelCarta.classList.add('hidden');
-    btnImprimir?.classList.add('hidden'); // ✅ seguro
+    btnImprimir?.classList.add('hidden');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  function showCarta() {
-    panelFormulario.classList.add('hidden');
-    panelCarta.classList.remove('hidden');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
 
   function syncCreditosInputs() {
     if (!creditosCount || !creditosContainer) return;
@@ -514,6 +520,19 @@
       if (!visible) inp.value = '';
     }
   }
+
+  const chkJudicial = document.getElementById('JUDICIAL');
+  const expedienteField = document.getElementById('EXPEDIENTE_FIELD');
+  const expedienteInput = document.getElementById('EXPEDIENTE');
+    
+  function syncJudicialUI() {
+    const on = !!chkJudicial?.checked;
+      expedienteField?.classList.toggle('hidden', !on);
+    if (!on && expedienteInput) expedienteInput.value = '';
+  }
+    
+  chkJudicial?.addEventListener('change', syncJudicialUI);
+  syncJudicialUI();
 
   function buildCreditosString() {
     if (!creditosCount) return '';
@@ -540,7 +559,13 @@
         text = text.replace(reSing, '');
       }
       return text;
-  }
+      }
+    function applyJudicialBlock(text) {
+      const on = !!document.getElementById('JUDICIAL')?.checked;
+      const reJud = /\{\{\s*judicial\s*\}\}([\s\S]*?)\{\{\s*\/judicial\s*\}\}/gi;
+      return on ? text.replace(reJud, '$1') : text.replace(reJud, '');
+    }
+
 
   function applyTemplate(templateStr, data) {
     return templateStr.replace(/\{\{\s*([A-Za-z0-9_]+)\s*\}\}/g, (match, key) => {
@@ -559,25 +584,26 @@
     if (!yyyy || mm < 1 || mm > 12 || dd < 1 || dd > 31) return '';
     return `${dd} de ${MONTHS_ES[mm - 1]} de ${yyyy}`;
   }
-
+  
   function collectData() {
-    const data = {};
-    for (const key of placeholders) {
-      if (key === 'CREDITOS') {
-        data[key] = buildCreditosString();
-        continue;
+      const data = {};
+      for (const key of placeholders) {
+        if (key === 'CREDITOS') {
+          data[key] = buildCreditosString();
+          continue;
+        }
+        const el = document.getElementById(key);
+        if (!el) continue;
+        let v = (el.value || '').trim();
+        if (key === 'FECHA_HOY' || key === 'FECHA_CASTIGO' || key === 'FECHA_PAGO') {
+          v = isoToLongEs(v);
+        }
+        data[key] = v;
       }
-      const el = document.getElementById(key);
-      if (!el) continue;
-      let v = (el.value || '').trim();
-      if (key === 'FECHA_HOY' || key === 'FECHA_CASTIGO' || key === 'FECHA_PAGO') {
-        v = isoToLongEs(v);
-      }
-      data[key] = v;
-    }
-    return data;
+    
+      data.EXPEDIENTE = (document.getElementById('EXPEDIENTE')?.value || '').trim();
+      return data;
   }
-
   btnEditar?.addEventListener('click', showForm);
   creditosCount?.addEventListener('change', syncCreditosInputs);
   syncCreditosInputs();
@@ -594,24 +620,23 @@
     }
     
     const tplRaw = tplCarta.innerHTML;
-    const tplFixed = applySingularPluralByCreditos(tplRaw);
+    let tplFixed = applySingularPluralByCreditos(tplRaw);
+    tplFixed = applyJudicialBlock(tplFixed);
     renderCarta.innerHTML = applyTemplate(tplFixed, data);
 
     showCarta();
-    btnImprimir?.classList.remove('hidden'); // ✅ mostrar botón
+    btnImprimir?.classList.remove('hidden');
   });
-
-  const btnImprimir = document.getElementById('btnImprimir');
     
     function showCarta() {
       panelFormulario.classList.add('hidden');
       panelCarta.classList.remove('hidden');
-      btnImprimir?.classList.remove('hidden');   // ✅
+      btnImprimir?.classList.remove('hidden');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
     
     btnImprimir?.addEventListener('click', () => {
-      window.print(); // ✅ El navegador permite "Guardar como PDF" con texto seleccionable
+      window.print(); 
   });
 </script>
 
