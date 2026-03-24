@@ -4,69 +4,56 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CARTA-DE-NO-ADEUDO_XXXXXXXX</title>
+  <title>DOCUMENTOS_FAST</title>
   <style>
-    /* =======================
-       CONFIGURACIÓN GLOBAL
-    ======================= */
     @page{
-      size: Letter;   /* 21.59 cm x 27.94 cm */
+      size: Letter;
       margin: 0;
     }
 
     body{
       margin:0;
       background:#f5f5f5;
-      font-family: "Noto Sans", Arial, Helvetica, sans-serif; /* ✅ */
+      font-family: "Noto Sans", Arial, Helvetica, sans-serif;
       line-height:1.6;
       color:#222;
     }
 
-    /* =======================
-       HOJA LETTER (DOCUMENTO)
-    ======================= */
     .hoja{
       width:21.59cm;
-      height:27.94cm;
+      min-height:27.94cm;
       margin:40px auto;
       background:#fff;
-    
       padding:3.6cm 2cm 2.5cm;
-    
       box-sizing:border-box;
       position:relative;
       overflow:hidden;
       border-radius:0;
       box-shadow:none;
     }
-    
+
     .doc-header{
       position:absolute;
       top:1.2cm;
       left:2cm;
       right:2cm;
-    
       margin:0;
       opacity:.78;
     }
-    
-    /* tu layout actual sirve */
+
     .header-top{
       display:flex;
       justify-content:flex-end;
       align-items:flex-start;
       margin-bottom:10px;
     }
-    
+
     .logo{
       max-width:150px;
       height:auto;
       display:block;
     }
 
-    /* =======================
-       CONTENIDO DE CARTA
-    ======================= */
     .fecha{
       text-align:right;
       white-space:nowrap;
@@ -107,9 +94,6 @@
       text-align:right;
     }
 
-    /* =======================
-       FIRMA
-    ======================= */
     .firma{
       margin-top: 46px;
       text-align:center;
@@ -144,7 +128,7 @@
       border-bottom: 1px solid #cfcfcf;
       padding: 10px calc(2cm + 12px);
     }
-    
+
     .nota small{
       display:block;
       margin:0;
@@ -157,9 +141,6 @@
       text-align:justify;
     }
 
-    /* =======================
-       UI FORMULARIO
-    ======================= */
     .app-bar{
       max-width:780px;
       margin:40px auto 0;
@@ -185,6 +166,29 @@
       padding:20px 18px;
     }
 
+    .tabs-cartas{
+      display:flex;
+      gap:10px;
+      margin-bottom:16px;
+      flex-wrap:wrap;
+    }
+
+    .tab-carta{
+      border:1px solid #ddd;
+      background:#f3f3f3;
+      color:#222;
+      padding:10px 14px;
+      border-radius:10px;
+      font-weight:700;
+      cursor:pointer;
+    }
+
+    .tab-carta.active{
+      background:#111;
+      color:#fff;
+      border-color:#111;
+    }
+
     .grid{
       display:grid;
       grid-template-columns: 1fr 1fr;
@@ -195,9 +199,6 @@
       .grid{ grid-template-columns: 1fr; }
     }
 
-    /* =======================
-       FORM CONTROLS
-    ======================= */
     .field label{
       display:block;
       font-size:12px;
@@ -224,16 +225,6 @@
       color:#444;
       margin-bottom:6px;
       font-weight:700;
-    }
-
-    /* =======================
-       CRÉDITOS
-    ======================= */
-    .creditos-toolbar{
-      display:flex;
-      gap:12px;
-      align-items:flex-end;
-      margin-bottom:10px;
     }
 
     .creditos-grid{
@@ -274,9 +265,6 @@
       border-radius:6px;
     }
 
-    /* =======================
-       ACCIONES
-    ======================= */
     .actions{
       display:flex;
       gap:10px;
@@ -312,6 +300,61 @@
       display:none !important;
     }
 
+    /* ===== AMONESTACIÓN ===== */
+    .memo-wrap{
+      font-size:10.5pt;
+      color:#111;
+    }
+
+    .memo-codigo{
+      text-align:center;
+      font-weight:700;
+      margin-top:10px;
+      margin-bottom:34px;
+    }
+
+    .memo-fecha{
+      text-align:right;
+      margin-bottom:26px;
+    }
+
+    .memo-meta{
+      margin-bottom:22px;
+    }
+
+    .memo-meta p{
+      margin:0 0 8px;
+    }
+
+    .memo-cuerpo p{
+      margin:0 0 16px;
+      text-align:justify;
+    }
+
+    .memo-firma{
+      margin-top:46px;
+      text-align:center;
+    }
+
+    .firma-linea{
+      width:280px;
+      max-width:100%;
+      border-top:1px solid #222;
+      margin:0 auto 10px;
+    }
+
+    .firma-bloque div{
+      line-height:1.4;
+    }
+
+    .memo-recepcion{
+      margin-top:44px;
+    }
+
+    .memo-recepcion p{
+      margin:0 0 10px;
+    }
+
     @media print {
       body { background: #fff !important; }
       .app-bar, #panelFormulario { display: none !important; }
@@ -320,13 +363,8 @@
         margin: 0 !important;
         box-shadow: none !important;
         width: 21.59cm !important;
-        height: 27.94cm !important;
+        min-height: 27.94cm !important;
       }
-    }
-    
-    @page {
-      size: Letter;
-      margin: 0;
     }
 </style>
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
@@ -342,11 +380,16 @@
       </div>
   </div>
 
-  <!-- Formulario -->
   <section class="panel" id="panelFormulario">
-    <form id="formCarta">
-      <div class="grid">
-        <div class="field">
+    <div class="tabs-cartas" id="tabsCartas">
+      <button class="tab-carta active" type="button" data-model="cdna">CARTA DE NO ADEUDO</button>
+      <button class="tab-carta" type="button" data-model="amonestacion">AMONESTACIÓN</button>
+    </div>
+
+    <div class="modelo-form" id="formWrap_cdna" data-model="cdna">
+      <form class="form-carta" data-model="cdna">
+        <div class="grid">
+          <div class="field">
       <label for="DNI">DNI</label>
       <input id="DNI" type="text" value="" placeholder="Ingresa DNI">
     </div>
@@ -390,7 +433,7 @@
 
             <div class="creditos-selector">
               <span>Cantidad</span>
-              <select id="CREDITOS_COUNT">
+              <select id="CREDITOS_COUNT" data-model="cdna">
                 <option value="1" selected>1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -408,34 +451,100 @@
             <input id="CREDITOS_5" type="text" placeholder="Crédito 5">
           </div>
         </div>
+<div class="field">
+      <label for="EXPEDIENTE">Nº de expediente</label>
+      <input id="EXPEDIENTE" type="text" value="" placeholder="Ingresa Nº de expediente">
+    </div>
 <div class="field" style="grid-column: span 2;">
-  <label class="mini-label">JUDICIAL</label>
-  <div style="display:flex; align-items:center; gap:10px;">
-    <input id="JUDICIAL" type="checkbox" />
-    <span style="font-size:13px; color:#444;">Activar expediente judicial</span>
-  </div>
-</div>
+          <label class="mini-label">JUDICIAL</label>
+          <div style="display:flex; align-items:center; gap:10px;">
+            <input id="JUDICIAL" type="checkbox" />
+            <span style="font-size:13px; color:#444;">Activar expediente judicial</span>
+          </div>
+        </div>
 
-<div class="field hidden" id="EXPEDIENTE_FIELD" style="grid-column: span 2;">
-  <label for="EXPEDIENTE">Nº de expediente</label>
-  <input id="EXPEDIENTE" type="text" value="" placeholder="Ingresa Nº de expediente">
-</div>
-      </div>
+        <div class="field hidden" id="EXPEDIENTE_FIELD" style="grid-column: span 2;">
+          <label for="EXPEDIENTE">Nº de expediente</label>
+          <input id="EXPEDIENTE" type="text" value="" placeholder="Ingresa Nº de expediente">
+        </div>
+        </div>
 
-      <div class="actions">
-        <button class="btn-primary" type="submit">GENERAR CARTA</button>
-      </div>
+        <div class="actions">
+          <button class="btn-primary" type="submit">GENERAR CARTA</button>
+        </div>
 
-      <p class="hint">Completa los campos y presiona <b>GENERAR CARTA</b> para ver la carta.</p>
-    </form>
+        <p class="hint">Completa los campos y presiona <b>GENERAR CARTA</b> para ver la carta.</p>
+      </form>
+    </div>
+
+<div class="modelo-form hidden" id="formWrap_amonestacion" data-model="amonestacion">
+      <form class="form-carta" data-model="amonestacion">
+        <div class="grid">
+          <div class="field">
+      <label for="numero">Número de memorando</label>
+      <input id="numero" type="text" value="" placeholder="Ingresa Número de memorando">
+    </div>
+<div class="field">
+      <label for="anio">Año</label>
+      <input id="anio" type="text" value="2026" placeholder="Ingresa Año">
+    </div>
+<div class="field">
+      <label for="ciudad">Ciudad</label>
+      <input id="ciudad" type="text" value="Lima" placeholder="Ingresa Ciudad">
+    </div>
+<div class="field">
+      <label for="fecha_documento">Fecha del documento</label>
+      <input id="fecha_documento" type="text" value="" placeholder="Ingresa Fecha del documento">
+    </div>
+<div class="field">
+      <label for="amonestado">Amonestado</label>
+      <input id="amonestado" type="text" value="" placeholder="Ingresa Amonestado">
+    </div>
+<div class="field">
+      <label for="cargo_amonestado">Cargo del amonestado</label>
+      <input id="cargo_amonestado" type="text" value="" placeholder="Ingresa Cargo del amonestado">
+    </div>
+<div class="field">
+      <label for="cantidad">Cantidad</label>
+      <input id="cantidad" type="text" value="" placeholder="Ingresa Cantidad">
+    </div>
+<div class="field">
+      <label for="tipo">Tipo</label>
+      <input id="tipo" type="text" value="" placeholder="Ingresa Tipo">
+    </div>
+<div class="field">
+      <label for="dias">Días</label>
+      <input id="dias" type="text" value="" placeholder="Ingresa Días">
+    </div>
+<div class="field">
+      <label for="calculo">Cálculo del mes</label>
+      <input id="calculo" type="text" value="" placeholder="Ingresa Cálculo del mes">
+    </div>
+<div class="field">
+      <label for="tiempo">Tiempo acumulado</label>
+      <input id="tiempo" type="text" value="" placeholder="Ingresa Tiempo acumulado">
+    </div>
+<div class="field">
+      <label for="super">Supervisor firmante</label>
+      <input id="super" type="text" value="" placeholder="Ingresa Supervisor firmante">
+    </div>
+        </div>
+
+        <div class="actions">
+          <button class="btn-primary" type="submit">GENERAR CARTA</button>
+        </div>
+
+        <p class="hint">Completa los campos y presiona <b>GENERAR CARTA</b> para ver la carta.</p>
+      </form>
+    </div>
   </section>
 
-  <!-- Carta -->
   <section id="panelCarta" class="hidden">
     <div id="renderCarta"></div>
   </section>
 
-  <template id="tplCarta">
+  <template id="tplCarta_cdna">
+
   <main class="hoja">
     <header class="doc-header">
       <div class="header-top">
@@ -486,158 +595,277 @@
     </section>
 
   </main>
-  </template>
+
+    </template>
+
+<template id="tplCarta_amonestacion">
+
+<main class="hoja">
+  <section class="memo-wrap">
+    <div class="memo-codigo">MEMORANDO No {{numero}} – {{anio}}</div>
+
+    <div class="memo-fecha">{{ciudad}}, {{fecha_documento}}</div>
+
+    <div class="memo-meta">
+      <p><strong>PARA:</strong> {{amonestado}} / {{cargo_amonestado}}</p>
+      <p><strong>ASUNTO:</strong> Amonestación Escrita</p>
+    </div>
+
+    <section class="memo-cuerpo">
+      <p>
+        {{asesor}}Por medio de la presente nos dirigimos a Ud. para manifestarle nuestra decisión de formularle la Amonestación Escrita por la actitud asumida por su persona al haber incurrido en {{cantidad}} {{tipo}} ({{dias}}).{{/asesor}}
+        {{supervisor}}A través de la presente, hacemos expreso el llamado de atención severo hacia usted con respecto a la conducta inadecuada que ha presentado durante el mes en curso, habiendo incurrido en {{cantidad}} {{tipo}} (el {{calculo}} del mes, correspondiente a los días {{dias}}), las cuales equivalen a {{tiempo}}. Para esto, se le recuerda que su horario de ingreso es hasta las 07:00 a.m.
+
+        Por los hechos dados, se le aplica una amonestación escrita y le invocamos a recapacitar sobre su actitud con el fin de mantener un buen desempeño de sus funciones dentro de la empresa. {{/supervisor}}
+      </p>
+
+      <p>
+        Sirva la presente como un precedente en caso de que las conductas negativas continúen y afecten la productividad laboral de la empresa. Si fuese este el escenario, se iniciará un procedimiento laboral para sancionarle. Nuestra decisión se encuentra debidamente sustentada en el artículo 9 del Decreto Supremo 003-97-TR Ley de Productividad y Competitividad Laboral.
+      </p>
+
+      <p>
+        Copia de esta comunicación va a su archivo personal para los efectos legales pertinentes.
+      </p>
+
+      <p>Atentamente,</p>
+    </section>
+
+    <section class="memo-firma">
+      <div class="firma-linea"></div>
+      <div class="firma-bloque">
+        {{supervisor}}<div>Mayra Llimpe</div>
+        <div>Jefe de Operaciones Corporativas</div>{{/supervisor}}
+        {{asesor}}<div>{{super}}</div>
+        <div>SUPERVISOR</div>{{/asesor}}
+      </div>
+    </section>
+
+    <section class="memo-recepcion">
+      <p><strong>Constancia de Recepción</strong></p>
+      <p>Nombres y Apellidos:</p>
+      <p>DNI:</p>
+      <p>Fecha:</p>
+      <p>Firma:</p>
+    </section>
+  </section>
+</main>
+
+    </template>
 
 <script>
-    const placeholders = ["CREDITOS", "DNI", "ENTIDAD", "EXPEDIENTE", "FECHA_CASTIGO", "FECHA_HOY", "FECHA_PAGO", "NOMBRE"];
-    const creditosCount = document.getElementById('CREDITOS_COUNT');
-    const creditosContainer = document.getElementById('CREDITOS_CONTAINER');
-    const panelFormulario = document.getElementById('panelFormulario');
-    const panelCarta = document.getElementById('panelCarta');
-    const renderCarta = document.getElementById('renderCarta');
-    const tplCarta = document.getElementById('tplCarta');
-    const btnEditar = document.getElementById('btnEditar');
-    const btnImprimir = document.getElementById('btnImprimir');
-    const form = document.getElementById('formCarta');
-    const MONTHS_ES = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Setiembre','Octubre','Noviembre','Diciembre'];
-  
-  function showForm() {
+  const MODELOS = {"cdna": {"id": "cdna", "nombre": "CARTA DE NO ADEUDO", "placeholders": ["DNI", "FECHA_HOY", "NOMBRE", "FECHA_PAGO", "ENTIDAD", "FECHA_CASTIGO", "CREDITOS", "EXPEDIENTE"], "labels": {"FECHA_HOY": "Fecha de emisión", "DNI": "DNI", "NOMBRE": "Nombre completo", "ENTIDAD": "Entidad (banco / empresa)", "FECHA_CASTIGO": "Fecha de cesión / castigo", "CREDITOS": "Créditos", "FECHA_PAGO": "Fecha de pago", "EXPEDIENTE": "Nº de expediente"}, "date_keys": ["FECHA_CASTIGO", "FECHA_HOY", "FECHA_PAGO"], "select_keys": ["ENTIDAD"], "textarea_keys": [], "defaults": {}}, "amonestacion": {"id": "amonestacion", "nombre": "AMONESTACIÓN", "placeholders": ["numero", "anio", "ciudad", "fecha_documento", "amonestado", "cargo_amonestado", "cantidad", "tipo", "dias", "calculo", "tiempo", "super"], "labels": {"numero": "Número de memorando", "anio": "Año", "ciudad": "Ciudad", "fecha_documento": "Fecha del documento", "amonestado": "Amonestado", "cargo_amonestado": "Cargo del amonestado", "rol_destinatario": "Tipo de destinatario", "cantidad": "Cantidad", "tipo": "Tipo", "dias": "Días", "calculo": "Cálculo del mes", "tiempo": "Tiempo acumulado", "super": "Supervisor firmante"}, "date_keys": [], "select_keys": ["rol_destinatario"], "textarea_keys": [], "defaults": {"anio": "2026", "ciudad": "Lima"}}};
+  let activeModel = 'cdna';
+
+  const panelFormulario = document.getElementById('panelFormulario');
+  const panelCarta = document.getElementById('panelCarta');
+  const renderCarta = document.getElementById('renderCarta');
+  const btnEditar = document.getElementById('btnEditar');
+  const btnImprimir = document.getElementById('btnImprimir');
+  const MONTHS_ES = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Setiembre','Octubre','Noviembre','Diciembre'];
+
+  function showForm() {{
     panelFormulario.classList.remove('hidden');
     panelCarta.classList.add('hidden');
     btnImprimir?.classList.add('hidden');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
+    window.scrollTo({{ top: 0, behavior: 'smooth' }});
+  }}
 
+  function showCarta() {{
+    panelFormulario.classList.add('hidden');
+    panelCarta.classList.remove('hidden');
+    btnImprimir?.classList.remove('hidden');
+    window.scrollTo({{ top: 0, behavior: 'smooth' }});
+  }}
 
-  function syncCreditosInputs() {
+  function switchModel(modelId) {{
+    activeModel = modelId;
+
+    document.querySelectorAll('.tab-carta').forEach(btn => {{
+      btn.classList.toggle('active', btn.dataset.model === modelId);
+    }});
+
+    document.querySelectorAll('.modelo-form').forEach(box => {{
+      box.classList.toggle('hidden', box.dataset.model !== modelId);
+    }});
+
+    syncCreditosInputs();
+    syncCdnaJudicialUI();
+  }}
+
+  function syncCreditosInputs() {{
+    if (activeModel !== 'cdna') return;
+    const creditosCount = document.getElementById('CREDITOS_COUNT');
+    const creditosContainer = document.getElementById('CREDITOS_CONTAINER');
     if (!creditosCount || !creditosContainer) return;
+
     const n = Math.max(1, Math.min(5, Number(creditosCount.value || 1)));
-    for (let i = 1; i <= 5; i++) {
-      const inp = document.getElementById(`CREDITOS_${i}`);
+    for (let i = 1; i <= 5; i++) {{
+      const inp = document.getElementById(`CREDITOS_${{i}}`);
       if (!inp) continue;
       const visible = i <= n;
       inp.classList.toggle('hidden', !visible);
       if (!visible) inp.value = '';
-    }
-  }
+    }}
+  }}
 
-  const chkJudicial = document.getElementById('JUDICIAL');
-  const expedienteField = document.getElementById('EXPEDIENTE_FIELD');
-  const expedienteInput = document.getElementById('EXPEDIENTE');
-    
-  function syncJudicialUI() {
-    const on = !!chkJudicial?.checked;
-      expedienteField?.classList.toggle('hidden', !on);
+  function syncCdnaJudicialUI() {{
+    const chkJudicial = document.getElementById('JUDICIAL');
+    const expedienteField = document.getElementById('EXPEDIENTE_FIELD');
+    const expedienteInput = document.getElementById('EXPEDIENTE');
+
+    if (!chkJudicial || !expedienteField) return;
+
+    const on = !!chkJudicial.checked;
+    expedienteField.classList.toggle('hidden', !on);
     if (!on && expedienteInput) expedienteInput.value = '';
-  }
-    
-  chkJudicial?.addEventListener('change', syncJudicialUI);
-  syncJudicialUI();
+  }}
 
-  function buildCreditosString() {
+  function buildCreditosString() {{
+    const creditosCount = document.getElementById('CREDITOS_COUNT');
     if (!creditosCount) return '';
     const n = Math.max(1, Math.min(5, Number(creditosCount.value || 1)));
     const vals = [];
-    for (let i = 1; i <= n; i++) {
-      const v = (document.getElementById(`CREDITOS_${i}`)?.value || '').trim();
+    for (let i = 1; i <= n; i++) {{
+      const v = (document.getElementById(`CREDITOS_${{i}}`)?.value || '').trim();
       if (v) vals.push(v);
-    }
+    }}
     return vals.join(', ');
-  }
-    
-  function applySingularPluralByCreditos(text) {
-      const n = Number(document.getElementById('CREDITOS_COUNT')?.value || 1);
-      const isSingular = (n === 1);
-      const reSing = /\{\{\s*singular\s*\}\}([\s\S]*?)\{\{\s*\/singular\s*\}\}/gi;
-      const rePlur = /\{\{\s*plural\s*\}\}([\s\S]*?)\{\{\s*\/plural\s*\}\}/gi;
-    
-      if (isSingular) {
-        text = text.replace(reSing, '$1');
-        text = text.replace(rePlur, '');
-      } else {
-        text = text.replace(rePlur, '$1');
-        text = text.replace(reSing, '');
-      }
-      return text;
-      }
-    function applyJudicialBlock(text) {
-      const on = !!document.getElementById('JUDICIAL')?.checked;
-      const reJud = /\{\{\s*judicial\s*\}\}([\s\S]*?)\{\{\s*\/judicial\s*\}\}/gi;
-      return on ? text.replace(reJud, '$1') : text.replace(reJud, '');
-    }
+  }}
 
+  function applySingularPluralByCreditos(text) {{
+    const n = Number(document.getElementById('CREDITOS_COUNT')?.value || 1);
+    const isSingular = (n === 1);
+    const reSing = /\{\{\s*singular\s*\}\}([\s\S]*?)\{\{\s*\/singular\s*\}\}/gi;
+    const rePlur = /\{\{\s*plural\s*\}\}([\s\S]*?)\{\{\s*\/plural\s*\}\}/gi;
 
-  function applyTemplate(templateStr, data) {
-    return templateStr.replace(/\{\{\s*([A-Za-z0-9_]+)\s*\}\}/g, (match, key) => {
+    if (isSingular) {{
+      text = text.replace(reSing, '$1');
+      text = text.replace(rePlur, '');
+    }} else {{
+      text = text.replace(rePlur, '$1');
+      text = text.replace(reSing, '');
+    }}
+    return text;
+  }}
+
+  function applyJudicialBlock(text) {{
+    const on = !!document.getElementById('JUDICIAL')?.checked;
+    const reJud = /\{\{\s*judicial\s*\}\}([\s\S]*?)\{\{\s*\/judicial\s*\}\}/gi;
+    return on ? text.replace(reJud, '$1') : text.replace(reJud, '');
+  }}
+
+  function applyRolBlocks(text) {{
+    const rol = (document.getElementById('rol_destinatario')?.value || '').trim();
+    const reAsesor = /\{\{\s*asesor\s*\}\}([\s\S]*?)\{\{\s*\/asesor\s*\}\}/gi;
+    const reSupervisor = /\{\{\s*supervisor\s*\}\}([\s\S]*?)\{\{\s*\/supervisor\s*\}\}/gi;
+
+    if (rol === 'asesor') {{
+      text = text.replace(reAsesor, '$1');
+      text = text.replace(reSupervisor, '');
+    }} else if (rol === 'supervisor') {{
+      text = text.replace(reSupervisor, '$1');
+      text = text.replace(reAsesor, '');
+    }} else {{
+      text = text.replace(reSupervisor, '');
+      text = text.replace(reAsesor, '');
+    }}
+
+    return text;
+  }}
+
+  function applyTemplate(templateStr, data) {{
+    return templateStr.replace(/\{\{\s*([A-Za-z0-9_]+)\s*\}\}/g, (match, key) => {{
       const v = data[key];
       return (v === undefined || v === null || v === '') ? match : String(v);
-    });
-  }
+    }});
+  }}
 
-  function isoToLongEs(iso) {
+  function isoToLongEs(iso) {{
     if (!iso) return '';
-    const m = String(iso).match(/^(\d{4})-(\d{2})-(\d{2})$/);
-    if (!m) return ''; // si viniera raro, no formatees
+    const m = String(iso).match(/^(\d{{4}})-(\d{{2}})-(\d{{2}})$/);
+    if (!m) return '';
     const yyyy = Number(m[1]);
-    const mm = Number(m[2]); // 1-12
+    const mm = Number(m[2]);
     const dd = Number(m[3]);
     if (!yyyy || mm < 1 || mm > 12 || dd < 1 || dd > 31) return '';
-    return `${dd} de ${MONTHS_ES[mm - 1]} de ${yyyy}`;
-  }
-  
-  function collectData() {
-      const data = {};
-      for (const key of placeholders) {
-        if (key === 'CREDITOS') {
-          data[key] = buildCreditosString();
-          continue;
-        }
-        const el = document.getElementById(key);
-        if (!el) continue;
-        let v = (el.value || '').trim();
-        if (key === 'FECHA_HOY' || key === 'FECHA_CASTIGO' || key === 'FECHA_PAGO') {
-          v = isoToLongEs(v);
-        }
-        data[key] = v;
-      }
-    
+    return `${{dd}} de ${{MONTHS_ES[mm - 1]}} de ${{yyyy}}`;
+  }}
+
+  function collectData(modelId) {{
+    const cfg = MODELOS[modelId];
+    const data = {{}};
+
+    for (const key of cfg.placeholders) {{
+      if (modelId === 'cdna' && key === 'CREDITOS') {{
+        data[key] = buildCreditosString();
+        continue;
+      }}
+
+      const el = document.getElementById(key);
+      if (!el) continue;
+
+      let v = (el.value || '').trim();
+
+      if (cfg.date_keys.includes(key)) {{
+        v = isoToLongEs(v);
+      }}
+
+      data[key] = v;
+    }}
+
+    if (modelId === 'cdna') {{
       data.EXPEDIENTE = (document.getElementById('EXPEDIENTE')?.value || '').trim();
-      return data;
-  }
+    }}
+
+    return data;
+  }}
+
+  document.querySelectorAll('.tab-carta').forEach(btn => {{
+    btn.addEventListener('click', () => switchModel(btn.dataset.model));
+  }});
+
   btnEditar?.addEventListener('click', showForm);
-  creditosCount?.addEventListener('change', syncCreditosInputs);
-  syncCreditosInputs();
 
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const data = collectData();
+  document.addEventListener('change', (e) => {{
+    if (e.target?.id === 'CREDITOS_COUNT') syncCreditosInputs();
+    if (e.target?.id === 'JUDICIAL') syncCdnaJudicialUI();
+  }});
 
-    if (('FECHA_HOY' in data) && !data.FECHA_HOY) {
-      const d = new Date();
-      const iso =
-        `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
-      data.FECHA_HOY = isoToLongEs(iso);
-    }
-    
-    const tplRaw = tplCarta.innerHTML;
-    let tplFixed = applySingularPluralByCreditos(tplRaw);
-    tplFixed = applyJudicialBlock(tplFixed);
-    renderCarta.innerHTML = applyTemplate(tplFixed, data);
+  document.querySelectorAll('.form-carta').forEach(form => {{
+    form.addEventListener('submit', (e) => {{
+      e.preventDefault();
 
-    showCarta();
-    btnImprimir?.classList.remove('hidden');
-  });
-    
-    function showCarta() {
-      panelFormulario.classList.add('hidden');
-      panelCarta.classList.remove('hidden');
-      btnImprimir?.classList.remove('hidden');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    
-    btnImprimir?.addEventListener('click', () => {
-      window.print(); 
-  });
+      const modelId = form.dataset.model;
+      const data = collectData(modelId);
+
+      if (modelId === 'cdna' && ('FECHA_HOY' in data) && !data.FECHA_HOY) {{
+        const d = new Date();
+        const iso = `${{d.getFullYear()}}-${{String(d.getMonth()+1).padStart(2,'0')}}-${{String(d.getDate()).padStart(2,'0')}}`;
+        data.FECHA_HOY = isoToLongEs(iso);
+      }}
+
+      const tplRaw = document.getElementById(`tplCarta_${{modelId}}`).innerHTML;
+      let tplFixed = tplRaw;
+
+      if (modelId === 'cdna') {{
+        tplFixed = applySingularPluralByCreditos(tplFixed);
+        tplFixed = applyJudicialBlock(tplFixed);
+      }}
+
+      if (modelId === 'amonestacion') {{
+        tplFixed = applyRolBlocks(tplFixed);
+      }}
+
+      renderCarta.innerHTML = applyTemplate(tplFixed, data);
+      showCarta();
+    }});
+  }});
+
+  btnImprimir?.addEventListener('click', () => {{
+    window.print();
+  }});
+
+  switchModel('cdna');
 </script>
 
 </body>
