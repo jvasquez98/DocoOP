@@ -193,10 +193,19 @@
       display:grid;
       grid-template-columns: 1fr 1fr;
       gap:12px;
+      align-items:start;
     }
 
     @media (max-width: 760px){
       .grid{ grid-template-columns: 1fr; }
+    }
+
+    .field-wrap{
+      display:block;
+    }
+
+    .field-wrap.hidden-scope{
+      display:none !important;
     }
 
     .field label{
@@ -217,6 +226,46 @@
       padding:7px 12px;
       font-size:14px;
       outline:none;
+    }
+
+    .field input[readonly]{
+      background:#f5f5f5;
+      color:#444;
+      cursor:not-allowed;
+    }
+
+    .field-dias{
+      grid-column: span 2;
+    }
+
+    .dias-picker{
+      margin-top:10px;
+      display:grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap:8px;
+    }
+
+    .dia-btn{
+      border:1px solid #d8d8d8;
+      background:#f7f7f7;
+      color:#222;
+      padding:8px 0;
+      border-radius:8px;
+      font-size:13px;
+      font-weight:700;
+      cursor:pointer;
+    }
+
+    .dia-btn.activo{
+      background:#111;
+      color:#fff;
+      border-color:#111;
+    }
+
+    @media (max-width: 760px){
+      .dias-picker{
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+      }
     }
 
     .mini-label{
@@ -292,6 +341,7 @@
       gap:10px;
       justify-content:flex-end;
       margin-top:14px;
+      grid-column:1 / -1;
     }
 
     button{
@@ -411,23 +461,23 @@
     <div class="modelo-form" id="formWrap_cdna" data-model="cdna">
       <form class="form-carta" data-model="cdna">
         <div class="grid">
-          <div class="field">
+          <div class="field-wrap" data-scope="all"><div class="field">
       <label for="cdna_DNI">DNI</label>
       <input id="cdna_DNI" type="text" value="" placeholder="Ingresa DNI">
-    </div>
-<div class="field">
+    </div></div>
+<div class="field-wrap" data-scope="all"><div class="field">
           <label for="cdna_FECHA_HOY">Fecha de emisión</label>
           <input id="cdna_FECHA_HOY" type="date" value="">
-        </div>
-<div class="field">
+        </div></div>
+<div class="field-wrap" data-scope="all"><div class="field">
       <label for="cdna_NOMBRE">Nombre completo</label>
       <input id="cdna_NOMBRE" type="text" value="" placeholder="Ingresa Nombre completo">
-    </div>
-<div class="field">
+    </div></div>
+<div class="field-wrap" data-scope="all"><div class="field">
           <label for="cdna_FECHA_PAGO">Fecha de pago</label>
           <input id="cdna_FECHA_PAGO" type="date" value="">
-        </div>
-<div class="field">
+        </div></div>
+<div class="field-wrap" data-scope="all"><div class="field">
           <label for="cdna_ENTIDAD">Entidad (banco / empresa)</label>
           <select id="cdna_ENTIDAD">
             <option value="">Selecciona una entidad...</option>
@@ -444,12 +494,12 @@
 <option value="Caja Municipal de Ahorro y Crédito de Sullana S.A.">Caja Municipal de Ahorro y Crédito de Sullana S.A.</option>
 <option value="Banco Scotiabank Perú S.A.A.">Banco Scotiabank Perú S.A.A.</option>
           </select>
-        </div>
-<div class="field">
+        </div></div>
+<div class="field-wrap" data-scope="all"><div class="field">
           <label for="cdna_FECHA_CASTIGO">Fecha de cesión / castigo</label>
           <input id="cdna_FECHA_CASTIGO" type="date" value="">
-        </div>
-<div class="field field-creditos">
+        </div></div>
+<div class="field-wrap" data-scope="all"><div class="field field-creditos">
           <div class="creditos-header">
             <label>Créditos</label>
 
@@ -472,18 +522,22 @@
             <input id="cdna_CREDITOS_4" type="text" placeholder="Crédito 4">
             <input id="cdna_CREDITOS_5" type="text" placeholder="Crédito 5">
           </div>
-        </div>
-<div class="field" style="grid-column: span 2;">
-          <label class="mini-label">JUDICIAL</label>
-          <div style="display:flex; align-items:center; gap:10px;">
-            <input id="cdna_JUDICIAL" type="checkbox" />
-            <span style="font-size:13px; color:#444;">Activar expediente judicial</span>
+        </div></div>
+<div class="field-wrap" data-scope="all">
+          <div class="field" style="grid-column: span 2;">
+            <label class="mini-label">JUDICIAL</label>
+            <div style="display:flex; align-items:center; gap:10px;">
+              <input id="cdna_JUDICIAL" type="checkbox" />
+              <span style="font-size:13px; color:#444;">Activar expediente judicial</span>
+            </div>
           </div>
         </div>
 
-        <div class="field hidden" id="cdna_EXPEDIENTE_FIELD" style="grid-column: span 2;">
-          <label for="cdna_EXPEDIENTE">Nº de expediente</label>
-          <input id="cdna_EXPEDIENTE" type="text" value="" placeholder="Ingresa Nº de expediente">
+        <div class="field-wrap" data-scope="all">
+          <div class="field hidden" id="cdna_EXPEDIENTE_FIELD" style="grid-column: span 2;">
+            <label for="cdna_EXPEDIENTE">Nº de expediente</label>
+            <input id="cdna_EXPEDIENTE" type="text" value="" placeholder="Ingresa Nº de expediente">
+          </div>
         </div>
         </div>
 
@@ -498,65 +552,90 @@
 <div class="modelo-form hidden" id="formWrap_amonestacion" data-model="amonestacion">
       <form class="form-carta" data-model="amonestacion">
         <div class="grid">
-          <div class="field">
-      <label for="amonestacion_numero">Número de memorando</label>
-      <input id="amonestacion_numero" type="text" value="" placeholder="Ingresa Número de memorando">
-    </div>
-<div class="field">
-      <label for="amonestacion_anio">Año</label>
-      <input id="amonestacion_anio" type="text" value="2026" placeholder="Ingresa Año">
-    </div>
-<div class="field">
-      <label for="amonestacion_ciudad">Ciudad</label>
-      <input id="amonestacion_ciudad" type="text" value="Lima" placeholder="Ingresa Ciudad">
-    </div>
-<div class="field">
-      <label for="amonestacion_fecha_documento">Fecha del documento</label>
-      <input id="amonestacion_fecha_documento" type="text" value="" placeholder="Ingresa Fecha del documento">
-    </div>
-<div class="field">
-      <label for="amonestacion_amonestado">Amonestado</label>
-      <input id="amonestacion_amonestado" type="text" value="" placeholder="Ingresa Amonestado">
-    </div>
-<div class="field">
-      <label for="amonestacion_cargo_amonestado">Cargo del amonestado</label>
-      <input id="amonestacion_cargo_amonestado" type="text" value="" placeholder="Ingresa Cargo del amonestado">
-    </div>
-<div class="field">
-      <label for="amonestacion_cantidad">Cantidad</label>
-      <input id="amonestacion_cantidad" type="text" value="" placeholder="Ingresa Cantidad">
-    </div>
-<div class="field">
-      <label for="amonestacion_tipo">Tipo</label>
-      <input id="amonestacion_tipo" type="text" value="" placeholder="Ingresa Tipo">
-    </div>
-<div class="field">
-      <label for="amonestacion_dias">Días</label>
-      <input id="amonestacion_dias" type="text" value="" placeholder="Ingresa Días">
-    </div>
-<div class="field">
+          <div class="field-wrap" data-scope="all"><div class="field">
+          <label for="amonestacion_amonestado">Amonestado</label>
+          <select id="amonestacion_amonestado">
+            <option value="">Selecciona...</option>
+          </select>
+        </div></div>
+<div class="field-wrap" data-scope="all"><div class="field">
+          <label for="amonestacion_dni">DNI</label>
+          <input id="amonestacion_dni" type="text" value="" readonly placeholder="DNI">
+        </div></div>
+<div class="field-wrap" data-scope="all"><div class="field">
+          <label for="amonestacion_cantidad">Cantidad</label>
+          <input id="amonestacion_cantidad" type="text" value="" readonly placeholder="Se completa automáticamente">
+        </div></div>
+<div class="field-wrap" data-scope="all"><div class="field">
+          <label for="amonestacion_tipo">Tipo</label>
+          <select id="amonestacion_tipo">
+            <option value="">Selecciona...</option>
+            <option value="TARDANZA">TARDANZA</option>
+            <option value="FALTA">FALTA</option>
+          </select>
+        </div></div>
+<div class="field-wrap" data-scope="all"><div class="field field-dias" style="grid-column: span 2;">
+          <label for="amonestacion_dias">Días</label>
+          <input id="amonestacion_dias" type="text" value="" readonly placeholder="Selecciona uno o más días">
+          <div class="dias-picker" id="amonestacion_dias_picker">
+            <button type="button" class="dia-btn" data-value="01">1</button>
+<button type="button" class="dia-btn" data-value="02">2</button>
+<button type="button" class="dia-btn" data-value="03">3</button>
+<button type="button" class="dia-btn" data-value="04">4</button>
+<button type="button" class="dia-btn" data-value="05">5</button>
+<button type="button" class="dia-btn" data-value="06">6</button>
+<button type="button" class="dia-btn" data-value="07">7</button>
+<button type="button" class="dia-btn" data-value="08">8</button>
+<button type="button" class="dia-btn" data-value="09">9</button>
+<button type="button" class="dia-btn" data-value="10">10</button>
+<button type="button" class="dia-btn" data-value="11">11</button>
+<button type="button" class="dia-btn" data-value="12">12</button>
+<button type="button" class="dia-btn" data-value="13">13</button>
+<button type="button" class="dia-btn" data-value="14">14</button>
+<button type="button" class="dia-btn" data-value="15">15</button>
+<button type="button" class="dia-btn" data-value="16">16</button>
+<button type="button" class="dia-btn" data-value="17">17</button>
+<button type="button" class="dia-btn" data-value="18">18</button>
+<button type="button" class="dia-btn" data-value="19">19</button>
+<button type="button" class="dia-btn" data-value="20">20</button>
+<button type="button" class="dia-btn" data-value="21">21</button>
+<button type="button" class="dia-btn" data-value="22">22</button>
+<button type="button" class="dia-btn" data-value="23">23</button>
+<button type="button" class="dia-btn" data-value="24">24</button>
+<button type="button" class="dia-btn" data-value="25">25</button>
+<button type="button" class="dia-btn" data-value="26">26</button>
+<button type="button" class="dia-btn" data-value="27">27</button>
+<button type="button" class="dia-btn" data-value="28">28</button>
+<button type="button" class="dia-btn" data-value="29">29</button>
+<button type="button" class="dia-btn" data-value="30">30</button>
+<button type="button" class="dia-btn" data-value="31">31</button>
+          </div>
+        </div></div>
+<div class="field-wrap" data-scope="supervisor"><div class="field">
       <label for="amonestacion_calculo">Cálculo del mes</label>
       <input id="amonestacion_calculo" type="text" value="" placeholder="Ingresa Cálculo del mes">
-    </div>
-<div class="field">
+    </div></div>
+<div class="field-wrap" data-scope="supervisor"><div class="field">
       <label for="amonestacion_tiempo">Tiempo acumulado</label>
       <input id="amonestacion_tiempo" type="text" value="" placeholder="Ingresa Tiempo acumulado">
-    </div>
-<div class="field">
-      <label for="amonestacion_super">Supervisor firmante</label>
-      <input id="amonestacion_super" type="text" value="" placeholder="Ingresa Supervisor firmante">
-    </div>
-<div class="field" style="grid-column: span 2;">
-          <label class="mini-label">Tipo de destinatario</label>
-          <div class="switch-rol" id="amonestacion_switch_rol">
-            <button type="button" class="switch-rol-btn active" data-value="asesor" id="btnRolAsesor">
-              ASESOR
-            </button>
-            <button type="button" class="switch-rol-btn" data-value="supervisor" id="btnRolSupervisor">
-              SUPERVISOR
-            </button>
+    </div></div>
+<div class="field-wrap" data-scope="asesor"><div class="field">
+          <label for="amonestacion_super">Supervisor firmante</label>
+          <input id="amonestacion_super" type="text" value="" readonly placeholder="Supervisor firmante">
+        </div></div>
+<div class="field-wrap" data-scope="all">
+          <div class="field" style="grid-column: span 2;">
+            <label class="mini-label">Tipo de destinatario</label>
+            <div class="switch-rol" id="amonestacion_switch_rol">
+              <button type="button" class="switch-rol-btn active" data-value="asesor" id="btnRolAsesor">
+                ASESOR
+              </button>
+              <button type="button" class="switch-rol-btn" data-value="supervisor" id="btnRolSupervisor">
+                SUPERVISOR
+              </button>
+            </div>
+            <input id="amonestacion_rol_destinatario" type="hidden" value="asesor">
           </div>
-          <input id="amonestacion_rol_destinatario" type="hidden" value="asesor">
         </div>
         </div>
 
@@ -632,7 +711,7 @@
 
 <main class="hoja">
   <section class="memo-wrap">
-    <div class="memo-codigo">MEMORANDO No {{numero}} – {{anio}}</div>
+    <div class="memo-codigo">MEMORANDO No xxx – 2026</div>
 
     <div class="memo-fecha">{{ciudad}}, {{fecha_documento}}</div>
 
@@ -683,7 +762,8 @@
     </template>
 
 <script>
-  const MODELOS = {"cdna": {"id": "cdna", "nombre": "CARTA DE NO ADEUDO", "placeholders": ["DNI", "FECHA_HOY", "NOMBRE", "FECHA_PAGO", "ENTIDAD", "FECHA_CASTIGO", "CREDITOS", "EXPEDIENTE"], "labels": {"FECHA_HOY": "Fecha de emisión", "DNI": "DNI", "NOMBRE": "Nombre completo", "ENTIDAD": "Entidad (banco / empresa)", "FECHA_CASTIGO": "Fecha de cesión / castigo", "CREDITOS": "Créditos", "FECHA_PAGO": "Fecha de pago", "EXPEDIENTE": "Nº de expediente"}, "date_keys": ["FECHA_CASTIGO", "FECHA_HOY", "FECHA_PAGO"], "select_keys": ["ENTIDAD"], "textarea_keys": [], "defaults": {}}, "amonestacion": {"id": "amonestacion", "nombre": "AMONESTACIÓN", "placeholders": ["numero", "anio", "ciudad", "fecha_documento", "amonestado", "cargo_amonestado", "cantidad", "tipo", "dias", "calculo", "tiempo", "super"], "labels": {"numero": "Número de memorando", "anio": "Año", "ciudad": "Ciudad", "fecha_documento": "Fecha del documento", "amonestado": "Amonestado", "cargo_amonestado": "Cargo del amonestado", "cantidad": "Cantidad", "tipo": "Tipo", "dias": "Días", "calculo": "Cálculo del mes", "tiempo": "Tiempo acumulado", "super": "Supervisor firmante", "rol_destinatario": "Tipo de destinatario"}, "date_keys": [], "select_keys": [], "textarea_keys": [], "defaults": {"anio": "2026", "ciudad": "Lima"}}};
+  const MODELOS = {"cdna": {"id": "cdna", "nombre": "CARTA DE NO ADEUDO", "placeholders": ["DNI", "FECHA_HOY", "NOMBRE", "FECHA_PAGO", "ENTIDAD", "FECHA_CASTIGO", "CREDITOS", "EXPEDIENTE"], "labels": {"FECHA_HOY": "Fecha de emisión", "DNI": "DNI", "NOMBRE": "Nombre completo", "ENTIDAD": "Entidad (banco / empresa)", "FECHA_CASTIGO": "Fecha de cesión / castigo", "CREDITOS": "Créditos", "FECHA_PAGO": "Fecha de pago", "EXPEDIENTE": "Nº de expediente"}, "date_keys": ["FECHA_CASTIGO", "FECHA_HOY", "FECHA_PAGO"], "select_keys": ["ENTIDAD"], "textarea_keys": [], "defaults": {}, "role_scopes": {"DNI": "all", "FECHA_HOY": "all", "NOMBRE": "all", "FECHA_PAGO": "all", "ENTIDAD": "all", "FECHA_CASTIGO": "all", "CREDITOS": "all", "EXPEDIENTE": "all"}}, "amonestacion": {"id": "amonestacion", "nombre": "AMONESTACIÓN", "placeholders": ["amonestado", "dni", "cantidad", "tipo", "dias", "calculo", "tiempo", "super"], "labels": {"ciudad": "Ciudad", "fecha_documento": "Fecha del documento", "amonestado": "Amonestado", "dni": "DNI", "cargo_amonestado": "Cargo del amonestado", "cantidad": "Cantidad", "tipo": "Tipo", "dias": "Días", "calculo": "Cálculo del mes", "tiempo": "Tiempo acumulado", "super": "Supervisor firmante", "rol_destinatario": "Tipo de destinatario"}, "date_keys": [], "select_keys": [], "textarea_keys": [], "defaults": {"ciudad": "Lima", "fecha_documento": ""}, "role_scopes": {"calculo": "supervisor", "dias": "all", "cantidad": "all", "super": "asesor", "tipo": "all", "amonestado": "all", "tiempo": "supervisor", "dni": "all"}}};
+  const CATALOGO_AMONESTACION = {"asesor": [{"nombre": "ALEIDITH GUEVARA CHAVEZ", "dni": "76214436", "supervisor": "JOHAN MAYA"}, {"nombre": "ALEJANDRO ANDRES GONZALES SAYAN", "dni": "74626735", "supervisor": "JOHAN MAYA"}, {"nombre": "ANALUCIA DEL CIELO PONCE LADINES", "dni": "72839865", "supervisor": "JOHAN MAYA"}, {"nombre": "ANDERSON RODRIGUEZ MUÑOZ", "dni": "47587400", "supervisor": "JORGE PALOMINO"}, {"nombre": "ANTHONY DEYVIS VICENTE LUYO", "dni": "70477743", "supervisor": "JOHAN MAYA"}, {"nombre": "CARLA ESTEFANIA VAALENCIA NUÑEZ", "dni": "46994661", "supervisor": "SANDY LOPEZ"}, {"nombre": "CARMEN ROSA PUMA GALLEGOS", "dni": "76656128", "supervisor": "KENNETH CUBA"}, {"nombre": "CRISTINA  TICONA LARICO", "dni": "44001162", "supervisor": "JOHAN MAYA"}, {"nombre": "DANIEL ENRIQUE ZAPATA MOGOLLON", "dni": "45084594", "supervisor": "KENNETH CUBA"}, {"nombre": "DAVID CHRISTIANS SANCHEZ SANCHEZ", "dni": "72716299", "supervisor": "KENNETH CUBA"}, {"nombre": "ELVIS JOEL GUERRERA DIAZ", "dni": "44883074", "supervisor": "JORGE PALOMINO"}, {"nombre": "ERIKA ROSSANA VILLAR ARIRUA", "dni": "47690367", "supervisor": "JOHAN MAYA"}, {"nombre": "ERIKA YESMIN PANTA MONTALVAN", "dni": "62792399", "supervisor": "LEONOR ÑAHUI"}, {"nombre": "EVELY JENNIFER TENORIO MIDMA", "dni": "70551168", "supervisor": "JORGE PALOMINO"}, {"nombre": "FLOR MARIA TINTAYA PUMACAYO", "dni": "71264767", "supervisor": "JOHAN MAYA"}, {"nombre": "FRANCO JUAN HUAMANI CUCHO", "dni": "43614775", "supervisor": "JORGE PALOMINO"}, {"nombre": "FRANK ANTONIO PACORA GARCIA", "dni": "48344037", "supervisor": "KENNETH CUBA"}, {"nombre": "GENESIS DUBEISY PALACIOS ALAMA", "dni": "75026229", "supervisor": "SANDY LOPEZ"}, {"nombre": "GENESIS LEONOR  VICUÑA ARCASI", "dni": "45262585", "supervisor": "JOHAN MAYA"}, {"nombre": "GERALDINE ARROYO TENORIO", "dni": "76089925", "supervisor": "LEONOR ÑAHUI"}, {"nombre": "GIANFRANCO PINEDO FLORES", "dni": "72512391", "supervisor": "JORGE PALOMINO"}, {"nombre": "GIANNINA RAQUEL AGUILAR MEGO", "dni": "48584670", "supervisor": "SANDY LOPEZ"}, {"nombre": "JANETT MARIA PORTOCARRERO TORRES", "dni": "40702064", "supervisor": "LEONOR ÑAHUI"}, {"nombre": "JENY LISETH QUIÑONES CHAVEZ", "dni": "43184866", "supervisor": "JORGE PALOMINO"}, {"nombre": "JEREMIAS HAGEO ROJAS HUAMAN", "dni": "76586998", "supervisor": "JOHAN MAYA"}, {"nombre": "JESSICA GABRIELA MELGAREJO CAJAHUANCA", "dni": "46793103", "supervisor": "SANDY LOPEZ"}, {"nombre": "JESSYKA YSABEL GARCIA NIÑO", "dni": "10762187", "supervisor": "LEONOR ÑAHUI"}, {"nombre": "JESUS CHRISTIAN ANIBAL ALVARADO HUARANGA", "dni": "46461021", "supervisor": "LEONOR ÑAHUI"}, {"nombre": "JHONATAN ALEXIS HECTOR CHAVEZ TINEO", "dni": "47659267", "supervisor": "JORGE PALOMINO"}, {"nombre": "JIMENA MEDINA MAMANI", "dni": "70988976", "supervisor": "KENNETH CUBA"}, {"nombre": "JOSELIN MARIVEL MONTALVO GASPAR", "dni": "73233992", "supervisor": "LEONOR ÑAHUI"}, {"nombre": "JUAN CARLOS LOZA DIAZ", "dni": "10491198", "supervisor": "KENNETH CUBA"}, {"nombre": "JUAN MANUEL ALANOCCA LAUREANO", "dni": "42251780", "supervisor": "LEONOR ÑAHUI"}, {"nombre": "KIARA ESTEFANIA CANEPA IGLESIAS", "dni": "72733809", "supervisor": "KENNETH CUBA"}, {"nombre": "LISELY ARIADNA MERA DAVILA", "dni": "72413556", "supervisor": "JORGE PALOMINO"}, {"nombre": "LUCERO JAZMIN JORDAN SARAVIA", "dni": "73257316", "supervisor": "SANDY LOPEZ"}, {"nombre": "LUIS MIGUEL VALLADARES TAIPE", "dni": "72758956", "supervisor": "SANDY LOPEZ"}, {"nombre": "LUIS STWUAR MACURI SARAVIA", "dni": "76824571", "supervisor": "KENNETH CUBA"}, {"nombre": "MALORY CRISTEL MONTEBLANCO CHICOMA", "dni": "72373931", "supervisor": "JORGE PALOMINO"}, {"nombre": "MARGARITA PIANCHACHI DIAZ", "dni": "70876605", "supervisor": "JORGE PALOMINO"}, {"nombre": "MARIA DEL CARMEN HUARCAYA ZORRILLA", "dni": "47411966", "supervisor": "SANDY LOPEZ"}, {"nombre": "MARTIN VARGAS CUSI", "dni": "47497410", "supervisor": "JOHAN MAYA"}, {"nombre": "MAYRA LEYVIS ELIZABETH AVALOS LAZO", "dni": "45119892", "supervisor": "DIGITAL"}, {"nombre": "MILAGROS QUIO HERRERA", "dni": "45139159", "supervisor": "KENNETH CUBA"}, {"nombre": "NATALIA JASMIN MARIN SANCHEZ", "dni": "71262377", "supervisor": "SANDY LOPEZ"}, {"nombre": "NICOLE KARINA CAURURO TAMARA", "dni": "75693756", "supervisor": "LEONOR ÑAHUI"}, {"nombre": "NOEMI CHUQUILIN MENDOZA", "dni": "74602206", "supervisor": "KENNETH CUBA"}, {"nombre": "PIERINA MICHEL TESEN ESPINOZA", "dni": "60870839", "supervisor": "JOHAN MAYA"}, {"nombre": "SARITA JAQUELINE GARAY JURADO", "dni": "40318129", "supervisor": "LEONOR ÑAHUI"}, {"nombre": "SONIA ISELA SULLA MARTINEZ", "dni": "10330959", "supervisor": "LEONOR ÑAHUI"}, {"nombre": "URSULA GRACIELA CENTENO POMALAZA", "dni": "10706451", "supervisor": "SANDY LOPEZ"}, {"nombre": "VERONICA ELSA HUARCA TABOADA", "dni": "43307898", "supervisor": "LEONOR ÑAHUI"}, {"nombre": "VICTOR ORLANDO RAMIREZ TORRES", "dni": "60914051", "supervisor": "SANDY LOPEZ"}], "supervisor": [{"nombre": "JOHAN DANIEL MAYA BALDEON", "dni": "75000131", "supervisor": "JOHAN MAYA"}, {"nombre": "JORGE ANTONIO PALOMINO DE LA CRUZ", "dni": "44265602", "supervisor": "JORGE PALOMINO"}, {"nombre": "KENNETH KATZUO CUBA RODRIGUEZ", "dni": "74122258", "supervisor": "KENNETH CUBA"}, {"nombre": "LEONOR MODESTA ÑAHUI NAVARRO", "dni": "46872195", "supervisor": "LEONOR ÑAHUI"}, {"nombre": "SANDY BEATRIZ LOPEZ BALVIN", "dni": "73049631", "supervisor": "SANDY LOPEZ"}], "excel_usado": "SSWO.xlsx"};
   let activeModel = 'cdna';
 
   const panelFormulario = document.getElementById('panelFormulario');
@@ -697,6 +777,111 @@
     return `${modelId}_${key}`;
   }
 
+  function getTodayLongEs() {
+    const d = new Date();
+    return `${d.getDate()} de ${MONTHS_ES[d.getMonth()]} de ${d.getFullYear()}`;
+  }
+
+  function getAmonestacionCatalogByRol() {
+    const rol = (document.getElementById('amonestacion_rol_destinatario')?.value || 'asesor').trim();
+    return rol === 'supervisor'
+      ? (CATALOGO_AMONESTACION.supervisor || [])
+      : (CATALOGO_AMONESTACION.asesor || []);
+  }
+
+  function syncAmonestadoOptionsByRol() {
+    const sel = document.getElementById('amonestacion_amonestado');
+    const dni = document.getElementById('amonestacion_dni');
+    const superInp = document.getElementById('amonestacion_super');
+    if (!sel) return;
+
+    const catalogo = getAmonestacionCatalogByRol();
+    const valorActual = sel.value || '';
+
+    sel.innerHTML = '<option value="">Selecciona...</option>' +
+      catalogo.map(p => `<option value="${p.nombre}">${p.nombre}</option>`).join('');
+
+    const existeActual = catalogo.some(p => p.nombre === valorActual);
+    sel.value = existeActual ? valorActual : '';
+
+    if (!existeActual) {
+      if (dni) dni.value = '';
+      if (superInp) superInp.value = '';
+    }
+
+    syncDatosAmonestacionDesdeSeleccion();
+  }
+
+  function syncDatosAmonestacionDesdeSeleccion() {
+    const sel = document.getElementById('amonestacion_amonestado');
+    const dni = document.getElementById('amonestacion_dni');
+    const superInp = document.getElementById('amonestacion_super');
+    if (!sel) return;
+
+    const nombre = (sel.value || '').trim();
+    const catalogo = getAmonestacionCatalogByRol();
+    const persona = catalogo.find(p => p.nombre === nombre);
+
+    if (!persona) {
+      if (dni) dni.value = '';
+      if (superInp) superInp.value = '';
+      return;
+    }
+
+    if (dni) dni.value = persona.dni || '';
+    if (superInp) superInp.value = persona.supervisor || '';
+  }
+
+  function syncDiasButtonsFromInput() {
+    const input = document.getElementById('amonestacion_dias');
+    if (!input) return;
+
+    const seleccionados = new Set(
+      (input.value || '')
+        .split(',')
+        .map(v => v.trim())
+        .filter(Boolean)
+    );
+
+    document.querySelectorAll('#amonestacion_dias_picker .dia-btn').forEach(btn => {
+      btn.classList.toggle('activo', seleccionados.has(btn.dataset.value));
+    });
+  }
+
+  function syncCantidadDesdeDias() {
+    const diasInput = document.getElementById('amonestacion_dias');
+    const cantidadInput = document.getElementById('amonestacion_cantidad');
+    if (!diasInput || !cantidadInput) return;
+
+    const total = (diasInput.value || '')
+      .split(',')
+      .map(v => v.trim())
+      .filter(Boolean).length;
+
+    cantidadInput.value = total ? String(total) : '';
+  }
+
+  function toggleDiaSeleccion(value) {
+    const input = document.getElementById('amonestacion_dias');
+    if (!input) return;
+
+    let valores = (input.value || '')
+      .split(',')
+      .map(v => v.trim())
+      .filter(Boolean);
+
+    if (valores.includes(value)) {
+      valores = valores.filter(v => v !== value);
+    } else {
+      valores.push(value);
+    }
+
+    valores = [...new Set(valores)].sort((a, b) => Number(a) - Number(b));
+    input.value = valores.join(', ');
+    syncDiasButtonsFromInput();
+    syncCantidadDesdeDias();
+  }
+  
   function setRolDestinatario(value) {
     const hidden = document.getElementById('amonestacion_rol_destinatario');
     const btnAsesor = document.getElementById('btnRolAsesor');
@@ -707,6 +892,21 @@
     hidden.value = value;
     btnAsesor?.classList.toggle('active', value === 'asesor');
     btnSupervisor?.classList.toggle('active', value === 'supervisor');
+
+    syncAmonestacionFieldsByRol();
+    syncAmonestadoOptionsByRol();
+  }
+
+  function syncAmonestacionFieldsByRol() {
+    const rol = (document.getElementById('amonestacion_rol_destinatario')?.value || 'asesor').trim();
+    const formWrap = document.getElementById('formWrap_amonestacion');
+    if (!formWrap) return;
+
+    formWrap.querySelectorAll('.field-wrap').forEach(el => {
+      const scope = el.dataset.scope || 'all';
+      const visible = (scope === 'all') || (scope === rol);
+      el.classList.toggle('hidden-scope', !visible);
+    });
   }
 
   function showForm() {
@@ -736,6 +936,10 @@
 
     syncCreditosInputs();
     syncCdnaJudicialUI();
+    syncAmonestacionFieldsByRol();
+    syncAmonestadoOptionsByRol();
+    syncDiasButtonsFromInput();
+    syncCantidadDesdeDias();
   }
 
   function syncCreditosInputs() {
@@ -870,7 +1074,19 @@
     }
 
     if (modelId === 'amonestacion') {
-      data.rol_destinatario = (document.getElementById('amonestacion_rol_destinatario')?.value || 'asesor').trim();
+      const rol = (document.getElementById('amonestacion_rol_destinatario')?.value || 'asesor').trim();
+
+      data.rol_destinatario = rol;
+      data.ciudad = 'Lima';
+      data.fecha_documento = getTodayLongEs();
+      data.dni = (document.getElementById('amonestacion_dni')?.value || '').trim();
+      data.super = (document.getElementById('amonestacion_super')?.value || '').trim();
+
+      if (rol === 'asesor') {
+        data.cargo_amonestado = 'Asesor de cobranza telefónica';
+      } else if (rol === 'supervisor') {
+        data.cargo_amonestado = 'Supervisor de cobranza telefónica';
+      }
     }
 
     return data;
@@ -890,9 +1106,16 @@
 
   btnEditar?.addEventListener('click', showForm);
 
+  document.addEventListener('click', (e) => {
+    if (e.target?.classList.contains('dia-btn')) {
+      toggleDiaSeleccion(e.target.dataset.value);
+    }
+  });
+
   document.addEventListener('change', (e) => {
     if (e.target?.id === 'cdna_CREDITOS_COUNT') syncCreditosInputs();
     if (e.target?.id === 'cdna_JUDICIAL') syncCdnaJudicialUI();
+    if (e.target?.id === 'amonestacion_amonestado') syncDatosAmonestacionDesdeSeleccion();
   });
 
   document.querySelectorAll('.form-carta').forEach(form => {
@@ -930,6 +1153,9 @@
   });
 
   setRolDestinatario('asesor');
+  syncAmonestadoOptionsByRol();
+  syncDiasButtonsFromInput();
+  syncCantidadDesdeDias();
   switchModel('cdna');
 </script>
 
