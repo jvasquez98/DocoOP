@@ -265,6 +265,28 @@
       border-radius:6px;
     }
 
+    .switch-rol{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+
+    .switch-rol-btn{
+      border:1px solid #d0d0d0;
+      background:#f3f3f3;
+      color:#222;
+      padding:10px 16px;
+      border-radius:10px;
+      font-weight:800;
+      cursor:pointer;
+    }
+
+    .switch-rol-btn.active{
+      background:#111;
+      color:#fff;
+      border-color:#111;
+    }
+
     .actions{
       display:flex;
       gap:10px;
@@ -390,24 +412,24 @@
       <form class="form-carta" data-model="cdna">
         <div class="grid">
           <div class="field">
-      <label for="DNI">DNI</label>
-      <input id="DNI" type="text" value="" placeholder="Ingresa DNI">
+      <label for="cdna_DNI">DNI</label>
+      <input id="cdna_DNI" type="text" value="" placeholder="Ingresa DNI">
     </div>
 <div class="field">
-          <label for="FECHA_HOY">Fecha de emisión</label>
-          <input id="FECHA_HOY" type="date" value="">
+          <label for="cdna_FECHA_HOY">Fecha de emisión</label>
+          <input id="cdna_FECHA_HOY" type="date" value="">
         </div>
 <div class="field">
-      <label for="NOMBRE">Nombre completo</label>
-      <input id="NOMBRE" type="text" value="" placeholder="Ingresa Nombre completo">
+      <label for="cdna_NOMBRE">Nombre completo</label>
+      <input id="cdna_NOMBRE" type="text" value="" placeholder="Ingresa Nombre completo">
     </div>
 <div class="field">
-          <label for="FECHA_PAGO">Fecha de pago</label>
-          <input id="FECHA_PAGO" type="date" value="">
+          <label for="cdna_FECHA_PAGO">Fecha de pago</label>
+          <input id="cdna_FECHA_PAGO" type="date" value="">
         </div>
 <div class="field">
-          <label for="ENTIDAD">Entidad (banco / empresa)</label>
-          <select id="ENTIDAD">
+          <label for="cdna_ENTIDAD">Entidad (banco / empresa)</label>
+          <select id="cdna_ENTIDAD">
             <option value="">Selecciona una entidad...</option>
 <option value="Caja Municipal de Ahorro y Crédito de Arequipa S.A.">Caja Municipal de Ahorro y Crédito de Arequipa S.A.</option>
 <option value="Banco de la Nación">Banco de la Nación</option>
@@ -424,8 +446,8 @@
           </select>
         </div>
 <div class="field">
-          <label for="FECHA_CASTIGO">Fecha de cesión / castigo</label>
-          <input id="FECHA_CASTIGO" type="date" value="">
+          <label for="cdna_FECHA_CASTIGO">Fecha de cesión / castigo</label>
+          <input id="cdna_FECHA_CASTIGO" type="date" value="">
         </div>
 <div class="field field-creditos">
           <div class="creditos-header">
@@ -433,7 +455,7 @@
 
             <div class="creditos-selector">
               <span>Cantidad</span>
-              <select id="CREDITOS_COUNT" data-model="cdna">
+              <select id="cdna_CREDITOS_COUNT" data-model="cdna">
                 <option value="1" selected>1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -443,29 +465,25 @@
             </div>
           </div>
 
-          <div class="creditos-grid" id="CREDITOS_CONTAINER">
-            <input id="CREDITOS_1" type="text" placeholder="Crédito 1">
-            <input id="CREDITOS_2" type="text" placeholder="Crédito 2">
-            <input id="CREDITOS_3" type="text" placeholder="Crédito 3">
-            <input id="CREDITOS_4" type="text" placeholder="Crédito 4">
-            <input id="CREDITOS_5" type="text" placeholder="Crédito 5">
+          <div class="creditos-grid" id="cdna_CREDITOS_CONTAINER">
+            <input id="cdna_CREDITOS_1" type="text" placeholder="Crédito 1">
+            <input id="cdna_CREDITOS_2" type="text" placeholder="Crédito 2">
+            <input id="cdna_CREDITOS_3" type="text" placeholder="Crédito 3">
+            <input id="cdna_CREDITOS_4" type="text" placeholder="Crédito 4">
+            <input id="cdna_CREDITOS_5" type="text" placeholder="Crédito 5">
           </div>
         </div>
-<div class="field">
-      <label for="EXPEDIENTE">Nº de expediente</label>
-      <input id="EXPEDIENTE" type="text" value="" placeholder="Ingresa Nº de expediente">
-    </div>
 <div class="field" style="grid-column: span 2;">
           <label class="mini-label">JUDICIAL</label>
           <div style="display:flex; align-items:center; gap:10px;">
-            <input id="JUDICIAL" type="checkbox" />
+            <input id="cdna_JUDICIAL" type="checkbox" />
             <span style="font-size:13px; color:#444;">Activar expediente judicial</span>
           </div>
         </div>
 
-        <div class="field hidden" id="EXPEDIENTE_FIELD" style="grid-column: span 2;">
-          <label for="EXPEDIENTE">Nº de expediente</label>
-          <input id="EXPEDIENTE" type="text" value="" placeholder="Ingresa Nº de expediente">
+        <div class="field hidden" id="cdna_EXPEDIENTE_FIELD" style="grid-column: span 2;">
+          <label for="cdna_EXPEDIENTE">Nº de expediente</label>
+          <input id="cdna_EXPEDIENTE" type="text" value="" placeholder="Ingresa Nº de expediente">
         </div>
         </div>
 
@@ -481,53 +499,65 @@
       <form class="form-carta" data-model="amonestacion">
         <div class="grid">
           <div class="field">
-      <label for="numero">Número de memorando</label>
-      <input id="numero" type="text" value="" placeholder="Ingresa Número de memorando">
+      <label for="amonestacion_numero">Número de memorando</label>
+      <input id="amonestacion_numero" type="text" value="" placeholder="Ingresa Número de memorando">
     </div>
 <div class="field">
-      <label for="anio">Año</label>
-      <input id="anio" type="text" value="2026" placeholder="Ingresa Año">
+      <label for="amonestacion_anio">Año</label>
+      <input id="amonestacion_anio" type="text" value="2026" placeholder="Ingresa Año">
     </div>
 <div class="field">
-      <label for="ciudad">Ciudad</label>
-      <input id="ciudad" type="text" value="Lima" placeholder="Ingresa Ciudad">
+      <label for="amonestacion_ciudad">Ciudad</label>
+      <input id="amonestacion_ciudad" type="text" value="Lima" placeholder="Ingresa Ciudad">
     </div>
 <div class="field">
-      <label for="fecha_documento">Fecha del documento</label>
-      <input id="fecha_documento" type="text" value="" placeholder="Ingresa Fecha del documento">
+      <label for="amonestacion_fecha_documento">Fecha del documento</label>
+      <input id="amonestacion_fecha_documento" type="text" value="" placeholder="Ingresa Fecha del documento">
     </div>
 <div class="field">
-      <label for="amonestado">Amonestado</label>
-      <input id="amonestado" type="text" value="" placeholder="Ingresa Amonestado">
+      <label for="amonestacion_amonestado">Amonestado</label>
+      <input id="amonestacion_amonestado" type="text" value="" placeholder="Ingresa Amonestado">
     </div>
 <div class="field">
-      <label for="cargo_amonestado">Cargo del amonestado</label>
-      <input id="cargo_amonestado" type="text" value="" placeholder="Ingresa Cargo del amonestado">
+      <label for="amonestacion_cargo_amonestado">Cargo del amonestado</label>
+      <input id="amonestacion_cargo_amonestado" type="text" value="" placeholder="Ingresa Cargo del amonestado">
     </div>
 <div class="field">
-      <label for="cantidad">Cantidad</label>
-      <input id="cantidad" type="text" value="" placeholder="Ingresa Cantidad">
+      <label for="amonestacion_cantidad">Cantidad</label>
+      <input id="amonestacion_cantidad" type="text" value="" placeholder="Ingresa Cantidad">
     </div>
 <div class="field">
-      <label for="tipo">Tipo</label>
-      <input id="tipo" type="text" value="" placeholder="Ingresa Tipo">
+      <label for="amonestacion_tipo">Tipo</label>
+      <input id="amonestacion_tipo" type="text" value="" placeholder="Ingresa Tipo">
     </div>
 <div class="field">
-      <label for="dias">Días</label>
-      <input id="dias" type="text" value="" placeholder="Ingresa Días">
+      <label for="amonestacion_dias">Días</label>
+      <input id="amonestacion_dias" type="text" value="" placeholder="Ingresa Días">
     </div>
 <div class="field">
-      <label for="calculo">Cálculo del mes</label>
-      <input id="calculo" type="text" value="" placeholder="Ingresa Cálculo del mes">
+      <label for="amonestacion_calculo">Cálculo del mes</label>
+      <input id="amonestacion_calculo" type="text" value="" placeholder="Ingresa Cálculo del mes">
     </div>
 <div class="field">
-      <label for="tiempo">Tiempo acumulado</label>
-      <input id="tiempo" type="text" value="" placeholder="Ingresa Tiempo acumulado">
+      <label for="amonestacion_tiempo">Tiempo acumulado</label>
+      <input id="amonestacion_tiempo" type="text" value="" placeholder="Ingresa Tiempo acumulado">
     </div>
 <div class="field">
-      <label for="super">Supervisor firmante</label>
-      <input id="super" type="text" value="" placeholder="Ingresa Supervisor firmante">
+      <label for="amonestacion_super">Supervisor firmante</label>
+      <input id="amonestacion_super" type="text" value="" placeholder="Ingresa Supervisor firmante">
     </div>
+<div class="field" style="grid-column: span 2;">
+          <label class="mini-label">Tipo de destinatario</label>
+          <div class="switch-rol" id="amonestacion_switch_rol">
+            <button type="button" class="switch-rol-btn active" data-value="asesor" id="btnRolAsesor">
+              ASESOR
+            </button>
+            <button type="button" class="switch-rol-btn" data-value="supervisor" id="btnRolSupervisor">
+              SUPERVISOR
+            </button>
+          </div>
+          <input id="amonestacion_rol_destinatario" type="hidden" value="asesor">
+        </div>
         </div>
 
         <div class="actions">
@@ -653,7 +683,7 @@
     </template>
 
 <script>
-  const MODELOS = {"cdna": {"id": "cdna", "nombre": "CARTA DE NO ADEUDO", "placeholders": ["DNI", "FECHA_HOY", "NOMBRE", "FECHA_PAGO", "ENTIDAD", "FECHA_CASTIGO", "CREDITOS", "EXPEDIENTE"], "labels": {"FECHA_HOY": "Fecha de emisión", "DNI": "DNI", "NOMBRE": "Nombre completo", "ENTIDAD": "Entidad (banco / empresa)", "FECHA_CASTIGO": "Fecha de cesión / castigo", "CREDITOS": "Créditos", "FECHA_PAGO": "Fecha de pago", "EXPEDIENTE": "Nº de expediente"}, "date_keys": ["FECHA_CASTIGO", "FECHA_HOY", "FECHA_PAGO"], "select_keys": ["ENTIDAD"], "textarea_keys": [], "defaults": {}}, "amonestacion": {"id": "amonestacion", "nombre": "AMONESTACIÓN", "placeholders": ["numero", "anio", "ciudad", "fecha_documento", "amonestado", "cargo_amonestado", "cantidad", "tipo", "dias", "calculo", "tiempo", "super"], "labels": {"numero": "Número de memorando", "anio": "Año", "ciudad": "Ciudad", "fecha_documento": "Fecha del documento", "amonestado": "Amonestado", "cargo_amonestado": "Cargo del amonestado", "rol_destinatario": "Tipo de destinatario", "cantidad": "Cantidad", "tipo": "Tipo", "dias": "Días", "calculo": "Cálculo del mes", "tiempo": "Tiempo acumulado", "super": "Supervisor firmante"}, "date_keys": [], "select_keys": ["rol_destinatario"], "textarea_keys": [], "defaults": {"anio": "2026", "ciudad": "Lima"}}};
+  const MODELOS = {"cdna": {"id": "cdna", "nombre": "CARTA DE NO ADEUDO", "placeholders": ["DNI", "FECHA_HOY", "NOMBRE", "FECHA_PAGO", "ENTIDAD", "FECHA_CASTIGO", "CREDITOS", "EXPEDIENTE"], "labels": {"FECHA_HOY": "Fecha de emisión", "DNI": "DNI", "NOMBRE": "Nombre completo", "ENTIDAD": "Entidad (banco / empresa)", "FECHA_CASTIGO": "Fecha de cesión / castigo", "CREDITOS": "Créditos", "FECHA_PAGO": "Fecha de pago", "EXPEDIENTE": "Nº de expediente"}, "date_keys": ["FECHA_CASTIGO", "FECHA_HOY", "FECHA_PAGO"], "select_keys": ["ENTIDAD"], "textarea_keys": [], "defaults": {}}, "amonestacion": {"id": "amonestacion", "nombre": "AMONESTACIÓN", "placeholders": ["numero", "anio", "ciudad", "fecha_documento", "amonestado", "cargo_amonestado", "cantidad", "tipo", "dias", "calculo", "tiempo", "super"], "labels": {"numero": "Número de memorando", "anio": "Año", "ciudad": "Ciudad", "fecha_documento": "Fecha del documento", "amonestado": "Amonestado", "cargo_amonestado": "Cargo del amonestado", "cantidad": "Cantidad", "tipo": "Tipo", "dias": "Días", "calculo": "Cálculo del mes", "tiempo": "Tiempo acumulado", "super": "Supervisor firmante", "rol_destinatario": "Tipo de destinatario"}, "date_keys": [], "select_keys": [], "textarea_keys": [], "defaults": {"anio": "2026", "ciudad": "Lima"}}};
   let activeModel = 'cdna';
 
   const panelFormulario = document.getElementById('panelFormulario');
@@ -663,208 +693,243 @@
   const btnImprimir = document.getElementById('btnImprimir');
   const MONTHS_ES = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Setiembre','Octubre','Noviembre','Diciembre'];
 
-  function showForm() {{
+  function getFieldId(modelId, key) {
+    return `${modelId}_${key}`;
+  }
+
+  function setRolDestinatario(value) {
+    const hidden = document.getElementById('amonestacion_rol_destinatario');
+    const btnAsesor = document.getElementById('btnRolAsesor');
+    const btnSupervisor = document.getElementById('btnRolSupervisor');
+
+    if (!hidden) return;
+
+    hidden.value = value;
+    btnAsesor?.classList.toggle('active', value === 'asesor');
+    btnSupervisor?.classList.toggle('active', value === 'supervisor');
+  }
+
+  function showForm() {
     panelFormulario.classList.remove('hidden');
     panelCarta.classList.add('hidden');
     btnImprimir?.classList.add('hidden');
-    window.scrollTo({{ top: 0, behavior: 'smooth' }});
-  }}
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 
-  function showCarta() {{
+  function showCarta() {
     panelFormulario.classList.add('hidden');
     panelCarta.classList.remove('hidden');
     btnImprimir?.classList.remove('hidden');
-    window.scrollTo({{ top: 0, behavior: 'smooth' }});
-  }}
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 
-  function switchModel(modelId) {{
+  function switchModel(modelId) {
     activeModel = modelId;
 
-    document.querySelectorAll('.tab-carta').forEach(btn => {{
+    document.querySelectorAll('.tab-carta').forEach(btn => {
       btn.classList.toggle('active', btn.dataset.model === modelId);
-    }});
+    });
 
-    document.querySelectorAll('.modelo-form').forEach(box => {{
+    document.querySelectorAll('.modelo-form').forEach(box => {
       box.classList.toggle('hidden', box.dataset.model !== modelId);
-    }});
+    });
 
     syncCreditosInputs();
     syncCdnaJudicialUI();
-  }}
+  }
 
-  function syncCreditosInputs() {{
+  function syncCreditosInputs() {
     if (activeModel !== 'cdna') return;
-    const creditosCount = document.getElementById('CREDITOS_COUNT');
-    const creditosContainer = document.getElementById('CREDITOS_CONTAINER');
+
+    const creditosCount = document.getElementById('cdna_CREDITOS_COUNT');
+    const creditosContainer = document.getElementById('cdna_CREDITOS_CONTAINER');
     if (!creditosCount || !creditosContainer) return;
 
     const n = Math.max(1, Math.min(5, Number(creditosCount.value || 1)));
-    for (let i = 1; i <= 5; i++) {{
-      const inp = document.getElementById(`CREDITOS_${{i}}`);
+    for (let i = 1; i <= 5; i++) {
+      const inp = document.getElementById(`cdna_CREDITOS_${i}`);
       if (!inp) continue;
       const visible = i <= n;
       inp.classList.toggle('hidden', !visible);
       if (!visible) inp.value = '';
-    }}
-  }}
+    }
+  }
 
-  function syncCdnaJudicialUI() {{
-    const chkJudicial = document.getElementById('JUDICIAL');
-    const expedienteField = document.getElementById('EXPEDIENTE_FIELD');
-    const expedienteInput = document.getElementById('EXPEDIENTE');
+  function syncCdnaJudicialUI() {
+    const chkJudicial = document.getElementById('cdna_JUDICIAL');
+    const expedienteField = document.getElementById('cdna_EXPEDIENTE_FIELD');
+    const expedienteInput = document.getElementById('cdna_EXPEDIENTE');
 
     if (!chkJudicial || !expedienteField) return;
 
     const on = !!chkJudicial.checked;
     expedienteField.classList.toggle('hidden', !on);
     if (!on && expedienteInput) expedienteInput.value = '';
-  }}
+  }
 
-  function buildCreditosString() {{
-    const creditosCount = document.getElementById('CREDITOS_COUNT');
+  function buildCreditosString() {
+    const creditosCount = document.getElementById('cdna_CREDITOS_COUNT');
     if (!creditosCount) return '';
+
     const n = Math.max(1, Math.min(5, Number(creditosCount.value || 1)));
     const vals = [];
-    for (let i = 1; i <= n; i++) {{
-      const v = (document.getElementById(`CREDITOS_${{i}}`)?.value || '').trim();
-      if (v) vals.push(v);
-    }}
-    return vals.join(', ');
-  }}
 
-  function applySingularPluralByCreditos(text) {{
-    const n = Number(document.getElementById('CREDITOS_COUNT')?.value || 1);
+    for (let i = 1; i <= n; i++) {
+      const v = (document.getElementById(`cdna_CREDITOS_${i}`)?.value || '').trim();
+      if (v) vals.push(v);
+    }
+
+    return vals.join(', ');
+  }
+
+  function applySingularPluralByCreditos(text) {
+    const n = Number(document.getElementById('cdna_CREDITOS_COUNT')?.value || 1);
     const isSingular = (n === 1);
     const reSing = /\{\{\s*singular\s*\}\}([\s\S]*?)\{\{\s*\/singular\s*\}\}/gi;
     const rePlur = /\{\{\s*plural\s*\}\}([\s\S]*?)\{\{\s*\/plural\s*\}\}/gi;
 
-    if (isSingular) {{
+    if (isSingular) {
       text = text.replace(reSing, '$1');
       text = text.replace(rePlur, '');
-    }} else {{
+    } else {
       text = text.replace(rePlur, '$1');
       text = text.replace(reSing, '');
-    }}
-    return text;
-  }}
+    }
 
-  function applyJudicialBlock(text) {{
-    const on = !!document.getElementById('JUDICIAL')?.checked;
+    return text;
+  }
+
+  function applyJudicialBlock(text) {
+    const on = !!document.getElementById('cdna_JUDICIAL')?.checked;
     const reJud = /\{\{\s*judicial\s*\}\}([\s\S]*?)\{\{\s*\/judicial\s*\}\}/gi;
     return on ? text.replace(reJud, '$1') : text.replace(reJud, '');
-  }}
+  }
 
-  function applyRolBlocks(text) {{
-    const rol = (document.getElementById('rol_destinatario')?.value || '').trim();
+  function applyRolBlocks(text) {
+    const rol = (document.getElementById('amonestacion_rol_destinatario')?.value || '').trim();
     const reAsesor = /\{\{\s*asesor\s*\}\}([\s\S]*?)\{\{\s*\/asesor\s*\}\}/gi;
     const reSupervisor = /\{\{\s*supervisor\s*\}\}([\s\S]*?)\{\{\s*\/supervisor\s*\}\}/gi;
 
-    if (rol === 'asesor') {{
+    if (rol === 'asesor') {
       text = text.replace(reAsesor, '$1');
       text = text.replace(reSupervisor, '');
-    }} else if (rol === 'supervisor') {{
+    } else if (rol === 'supervisor') {
       text = text.replace(reSupervisor, '$1');
       text = text.replace(reAsesor, '');
-    }} else {{
+    } else {
       text = text.replace(reSupervisor, '');
       text = text.replace(reAsesor, '');
-    }}
+    }
 
     return text;
-  }}
+  }
 
-  function applyTemplate(templateStr, data) {{
-    return templateStr.replace(/\{\{\s*([A-Za-z0-9_]+)\s*\}\}/g, (match, key) => {{
+  function applyTemplate(templateStr, data) {
+    return templateStr.replace(/\{\{\s*([A-Za-z0-9_]+)\s*\}\}/g, (match, key) => {
       const v = data[key];
       return (v === undefined || v === null || v === '') ? match : String(v);
-    }});
-  }}
+    });
+  }
 
-  function isoToLongEs(iso) {{
+  function isoToLongEs(iso) {
     if (!iso) return '';
-    const m = String(iso).match(/^(\d{{4}})-(\d{{2}})-(\d{{2}})$/);
+    const m = String(iso).match(/^(\d{4})-(\d{2})-(\d{2})$/);
     if (!m) return '';
     const yyyy = Number(m[1]);
     const mm = Number(m[2]);
     const dd = Number(m[3]);
     if (!yyyy || mm < 1 || mm > 12 || dd < 1 || dd > 31) return '';
-    return `${{dd}} de ${{MONTHS_ES[mm - 1]}} de ${{yyyy}}`;
-  }}
+    return `${dd} de ${MONTHS_ES[mm - 1]} de ${yyyy}`;
+  }
 
-  function collectData(modelId) {{
+  function collectData(modelId) {
     const cfg = MODELOS[modelId];
-    const data = {{}};
+    const data = {};
 
-    for (const key of cfg.placeholders) {{
-      if (modelId === 'cdna' && key === 'CREDITOS') {{
+    for (const key of cfg.placeholders) {
+      if (modelId === 'cdna' && key === 'CREDITOS') {
         data[key] = buildCreditosString();
         continue;
-      }}
+      }
 
-      const el = document.getElementById(key);
+      if (modelId === 'cdna' && key === 'EXPEDIENTE') {
+        data[key] = (document.getElementById('cdna_EXPEDIENTE')?.value || '').trim();
+        continue;
+      }
+
+      const el = document.getElementById(getFieldId(modelId, key));
       if (!el) continue;
 
       let v = (el.value || '').trim();
 
-      if (cfg.date_keys.includes(key)) {{
+      if (cfg.date_keys.includes(key)) {
         v = isoToLongEs(v);
-      }}
+      }
 
       data[key] = v;
-    }}
+    }
 
-    if (modelId === 'cdna') {{
-      data.EXPEDIENTE = (document.getElementById('EXPEDIENTE')?.value || '').trim();
-    }}
+    if (modelId === 'amonestacion') {
+      data.rol_destinatario = (document.getElementById('amonestacion_rol_destinatario')?.value || 'asesor').trim();
+    }
 
     return data;
-  }}
+  }
 
-  document.querySelectorAll('.tab-carta').forEach(btn => {{
+  document.querySelectorAll('.tab-carta').forEach(btn => {
     btn.addEventListener('click', () => switchModel(btn.dataset.model));
-  }});
+  });
+
+  document.getElementById('btnRolAsesor')?.addEventListener('click', () => {
+    setRolDestinatario('asesor');
+  });
+
+  document.getElementById('btnRolSupervisor')?.addEventListener('click', () => {
+    setRolDestinatario('supervisor');
+  });
 
   btnEditar?.addEventListener('click', showForm);
 
-  document.addEventListener('change', (e) => {{
-    if (e.target?.id === 'CREDITOS_COUNT') syncCreditosInputs();
-    if (e.target?.id === 'JUDICIAL') syncCdnaJudicialUI();
-  }});
+  document.addEventListener('change', (e) => {
+    if (e.target?.id === 'cdna_CREDITOS_COUNT') syncCreditosInputs();
+    if (e.target?.id === 'cdna_JUDICIAL') syncCdnaJudicialUI();
+  });
 
-  document.querySelectorAll('.form-carta').forEach(form => {{
-    form.addEventListener('submit', (e) => {{
+  document.querySelectorAll('.form-carta').forEach(form => {
+    form.addEventListener('submit', (e) => {
       e.preventDefault();
 
       const modelId = form.dataset.model;
       const data = collectData(modelId);
 
-      if (modelId === 'cdna' && ('FECHA_HOY' in data) && !data.FECHA_HOY) {{
+      if (modelId === 'cdna' && ('FECHA_HOY' in data) && !data.FECHA_HOY) {
         const d = new Date();
-        const iso = `${{d.getFullYear()}}-${{String(d.getMonth()+1).padStart(2,'0')}}-${{String(d.getDate()).padStart(2,'0')}}`;
+        const iso = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
         data.FECHA_HOY = isoToLongEs(iso);
-      }}
+      }
 
-      const tplRaw = document.getElementById(`tplCarta_${{modelId}}`).innerHTML;
+      const tplRaw = document.getElementById(`tplCarta_${modelId}`).innerHTML;
       let tplFixed = tplRaw;
 
-      if (modelId === 'cdna') {{
+      if (modelId === 'cdna') {
         tplFixed = applySingularPluralByCreditos(tplFixed);
         tplFixed = applyJudicialBlock(tplFixed);
-      }}
+      }
 
-      if (modelId === 'amonestacion') {{
+      if (modelId === 'amonestacion') {
         tplFixed = applyRolBlocks(tplFixed);
-      }}
+      }
 
       renderCarta.innerHTML = applyTemplate(tplFixed, data);
       showCarta();
-    }});
-  }});
+    });
+  });
 
-  btnImprimir?.addEventListener('click', () => {{
+  btnImprimir?.addEventListener('click', () => {
     window.print();
-  }});
+  });
 
+  setRolDestinatario('asesor');
   switchModel('cdna');
 </script>
 
