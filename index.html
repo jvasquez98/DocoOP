@@ -525,37 +525,48 @@
       <form class="form-carta" data-model="cdna">
         <div class="grid">
           <div class="field-wrap" data-scope="all">
-          <div class="field">
-            <label class="mini-label">JUDICIAL</label>
-            <div style="display:flex; align-items:center; gap:10px;">
-              <input id="cdna_JUDICIAL" type="checkbox" />
-              <span style="font-size:13px; color:#444;">Activar expediente judicial</span>
-            </div>
-          </div>
+      <div class="field">
+        <label class="mini-label">Tipo de documento</label>
+        <div class="switch-rol" id="cdna_switch_doc">
+          <button type="button" class="switch-rol-btn active" data-value="DNI" id="btnDocDni">
+            DNI
+          </button>
+          <button type="button" class="switch-rol-btn" data-value="RUC" id="btnDocRuc">
+            RUC
+          </button>
         </div>
-        
-        <div class="field-wrap hidden" data-scope="all" id="cdna_EXPEDIENTES_WRAP">
-          <div class="field field-creditos">
-            <div class="creditos-header">
-              <label>N° de expediente</label>
-            </div>
-            <div class="creditos-grid" id="cdna_EXPEDIENTES_CONTAINER">
-              <input id="cdna_EXPEDIENTE_1" type="text" placeholder="Expediente 1">
-              <input id="cdna_EXPEDIENTE_2" type="text" placeholder="Expediente 2">
-              <input id="cdna_EXPEDIENTE_3" type="text" placeholder="Expediente 3">
-              <input id="cdna_EXPEDIENTE_4" type="text" placeholder="Expediente 4">
-              <input id="cdna_EXPEDIENTE_5" type="text" placeholder="Expediente 5">
-            </div>
-          </div>
+        <input id="cdna_TIPO_DOC" type="hidden" value="DNI">
+      </div>
+    </div>
+
+    <div class="field-wrap" data-scope="all">
+      <div class="field">
+        <label class="mini-label">JUDICIAL</label>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <input id="cdna_JUDICIAL" type="checkbox" />
+          <span style="font-size:13px; color:#444;">Activar expediente judicial</span>
         </div>
+      </div>
+    </div>
+    
+    <div class="field-wrap hidden" data-scope="all" id="cdna_EXPEDIENTES_WRAP">
+      <div class="field field-creditos">
+        <div class="creditos-header">
+          <label>N° de expediente</label>
+        </div>
+        <div class="creditos-grid" id="cdna_EXPEDIENTES_CONTAINER">
+          <input id="cdna_EXPEDIENTE_1" type="text" placeholder="Expediente 1">
+          <input id="cdna_EXPEDIENTE_2" type="text" placeholder="Expediente 2">
+          <input id="cdna_EXPEDIENTE_3" type="text" placeholder="Expediente 3">
+          <input id="cdna_EXPEDIENTE_4" type="text" placeholder="Expediente 4">
+          <input id="cdna_EXPEDIENTE_5" type="text" placeholder="Expediente 5">
+        </div>
+      </div>
+    </div>
 <div class="field-wrap" data-scope="all"><div class="field">
-      <label for="cdna_DNI">DNI</label>
-      <input id="cdna_DNI" type="text" value="" placeholder="Ingresa DNI">
+      <label for="cdna_DOC">N° de documento</label>
+      <input id="cdna_DOC" type="text" value="" placeholder="Ingresa N° de documento">
     </div></div>
-<div class="field-wrap" data-scope="all"><div class="field">
-          <label for="cdna_FECHA_HOY">Fecha de emisión</label>
-          <input id="cdna_FECHA_HOY" type="date" value="">
-        </div></div>
 <div class="field-wrap" data-scope="all"><div class="field">
       <label for="cdna_NOMBRE">Nombre completo</label>
       <input id="cdna_NOMBRE" type="text" value="" placeholder="Ingresa Nombre completo">
@@ -738,7 +749,7 @@
       </div>
     </header>
 
-    <div class="titulo">CONSTANCIA DE NO ADEUDO - {{DNI}}</div>
+    <div class="titulo">CONSTANCIA DE NO ADEUDO - {{DOC}}</div>
 
     <section class="saludo">
       <p>A QUIEN CORRESPONDA</p>
@@ -749,7 +760,7 @@
         Por medio de la presente, le informamos que EXPÉRTIS MASTER SERVICER AND COLLECTIONS S.A.C., identificada con R.U.C. Nº 20600558481, con domicilio en Av. Circunvalación del Club Golf Los Incas N°154 - Oficina 403, distrito de Santiago de Surco, provincia y departamento de Lima, debidamente representada por Nathaly Isabel Jimenez Quispe según poderes inscritos en la partida N° 13459121, ha adquirido los derechos de la cartera de crédito otorgado por {{ENTIDAD}}, con base en el contrato de transferencia de cartera suscrito el {{FECHA_CASTIGO}}.
       </p>
       <p>
-          Al respecto informamos que {{DETALLE_CREDITOS}} correspondientes al Sr.(a) {{NOMBRE}}, identificado(a) con DNI N° {{DNI}}, {{singular}}han sido cancelados{{/singular}}{{plural}}han sido cancelados{{/plural}} en su totalidad el día {{FECHA_PAGO}}, no existiendo a la fecha saldo pendiente de pago, por lo que se da por cancelada la deuda. Cabe mencionar que si {{singular}}el{{/singular}}{{plural}}los{{/plural}} crédito{{plural}}s{{/plural}} en mención {{singular}}cuenta{{/singular}}{{plural}}cuentan{{/plural}} con un proceso judicial, será responsabilidad única y exclusivamente del cliente asumir y realizar de manera total todas las gestiones y los gastos notariales, registrales, tributarios y otros pertinentes que originen la formalización de la conclusión del proceso judicial, levantamiento de embargo y/o levantamiento de hipoteca¹.
+          Al respecto informamos que {{DETALLE_CREDITOS}} correspondientes al Sr.(a) {{NOMBRE}}, identificado(a) con {{TIPO_DOC}} N° {{DOC}}, {{singular}}han sido cancelados{{/singular}}{{plural}}han sido cancelados{{/plural}} en su totalidad el día {{FECHA_PAGO}}, no existiendo a la fecha saldo pendiente de pago, por lo que se da por cancelada la deuda. Cabe mencionar que si {{singular}}el{{/singular}}{{plural}}los{{/plural}} crédito{{plural}}s{{/plural}} en mención {{singular}}cuenta{{/singular}}{{plural}}cuentan{{/plural}} con un proceso judicial, será responsabilidad única y exclusivamente del cliente asumir y realizar de manera total todas las gestiones y los gastos notariales, registrales, tributarios y otros pertinentes que originen la formalización de la conclusión del proceso judicial, levantamiento de embargo y/o levantamiento de hipoteca¹.
       </p>
       <p>
         Se expide en Lima el {{FECHA_HOY}}, y se imprimió en Lima el {{FECHA_HOY}}.
@@ -849,7 +860,7 @@
     </template>
 
 <script>
-  const MODELOS = {"cdna": {"id": "cdna", "nombre": "CARTA DE NO ADEUDO", "placeholders": ["DNI", "FECHA_HOY", "NOMBRE", "FECHA_PAGO", "ENTIDAD", "FECHA_CASTIGO", "CREDITOS"], "labels": {"FECHA_HOY": "Fecha de emisión", "DNI": "DNI", "NOMBRE": "Nombre completo", "ENTIDAD": "Entidad (banco / empresa)", "FECHA_CASTIGO": "Fecha de cesión / castigo", "CREDITOS": "Créditos", "FECHA_PAGO": "Fecha de pago"}, "date_keys": ["FECHA_CASTIGO", "FECHA_HOY", "FECHA_PAGO"], "select_keys": ["ENTIDAD"], "textarea_keys": [], "defaults": {}, "role_scopes": {"DNI": "all", "FECHA_HOY": "all", "NOMBRE": "all", "FECHA_PAGO": "all", "ENTIDAD": "all", "FECHA_CASTIGO": "all", "CREDITOS": "all"}}, "amonestacion": {"id": "amonestacion", "nombre": "AMONESTACIÓN", "placeholders": ["code", "amonestado", "dni", "tipo", "dias", "cantidad", "super", "tiempo"], "labels": {"ciudad": "Ciudad", "fecha_documento": "Fecha del documento", "amonestado": "Amonestado", "dni": "DNI", "cargo_amonestado": "Cargo del amonestado", "cantidad": "Cantidad", "tipo": "Tipo", "dias": "Días", "calculo": "Cálculo del mes", "tiempo": "Tiempo acumulado", "super": "Supervisor firmante", "rol_destinatario": "Tipo de destinatario", "code": "N° de memorando"}, "date_keys": [], "select_keys": [], "textarea_keys": [], "defaults": {"ciudad": "Lima", "fecha_documento": ""}, "role_scopes": {"amonestado": "all", "code": "all", "cantidad": "all", "dias": "all", "tiempo": "supervisor", "tipo": "all", "super": "asesor", "dni": "all"}}};
+  const MODELOS = {"cdna": {"id": "cdna", "nombre": "CARTA DE NO ADEUDO", "placeholders": ["DOC", "NOMBRE", "FECHA_PAGO", "ENTIDAD", "FECHA_CASTIGO", "CREDITOS"], "labels": {"FECHA_HOY": "Fecha de emisión", "TIPO_DOC": "Tipo de documento", "DOC": "N° de documento", "NOMBRE": "Nombre completo", "ENTIDAD": "Entidad (banco / empresa)", "FECHA_CASTIGO": "Fecha de cesión / castigo", "CREDITOS": "Créditos", "FECHA_PAGO": "Fecha de pago"}, "date_keys": ["FECHA_CASTIGO", "FECHA_HOY", "FECHA_PAGO"], "select_keys": ["ENTIDAD"], "textarea_keys": [], "defaults": {}, "role_scopes": {"DOC": "all", "NOMBRE": "all", "FECHA_PAGO": "all", "ENTIDAD": "all", "FECHA_CASTIGO": "all", "CREDITOS": "all"}}, "amonestacion": {"id": "amonestacion", "nombre": "AMONESTACIÓN", "placeholders": ["code", "amonestado", "dni", "tipo", "dias", "cantidad", "super", "tiempo"], "labels": {"ciudad": "Ciudad", "fecha_documento": "Fecha del documento", "amonestado": "Amonestado", "dni": "DNI", "cargo_amonestado": "Cargo del amonestado", "cantidad": "Cantidad", "tipo": "Tipo", "dias": "Días", "calculo": "Cálculo del mes", "tiempo": "Tiempo acumulado", "super": "Supervisor firmante", "rol_destinatario": "Tipo de destinatario", "code": "N° de memorando"}, "date_keys": [], "select_keys": [], "textarea_keys": [], "defaults": {"ciudad": "Lima", "fecha_documento": ""}, "role_scopes": {"dias": "all", "amonestado": "all", "code": "all", "cantidad": "all", "tipo": "all", "super": "asesor", "tiempo": "supervisor", "dni": "all"}}};
   const CATALOGO_AMONESTACION = {"asesor": [{"nombre": "ALEIDITH GUEVARA CHAVEZ", "dni": "76214436", "supervisor": "JOHAN MAYA"}, {"nombre": "ALEJANDRO ANDRES GONZALES SAYAN", "dni": "74626735", "supervisor": "JOHAN MAYA"}, {"nombre": "ANALUCIA DEL CIELO PONCE LADINES", "dni": "72839865", "supervisor": "JOHAN MAYA"}, {"nombre": "ANDERSON RODRIGUEZ MUÑOZ", "dni": "47587400", "supervisor": "JORGE PALOMINO"}, {"nombre": "ANTHONY DEYVIS VICENTE LUYO", "dni": "70477743", "supervisor": "JOHAN MAYA"}, {"nombre": "CARLA ESTEFANIA VAALENCIA NUÑEZ", "dni": "46994661", "supervisor": "SANDY LOPEZ"}, {"nombre": "CARMEN ROSA PUMA GALLEGOS", "dni": "76656128", "supervisor": "KENNETH CUBA"}, {"nombre": "CRISTINA  TICONA LARICO", "dni": "44001162", "supervisor": "JOHAN MAYA"}, {"nombre": "DANIEL ENRIQUE ZAPATA MOGOLLON", "dni": "45084594", "supervisor": "KENNETH CUBA"}, {"nombre": "DAVID CHRISTIANS SANCHEZ SANCHEZ", "dni": "72716299", "supervisor": "KENNETH CUBA"}, {"nombre": "ELVIS JOEL GUERRERA DIAZ", "dni": "44883074", "supervisor": "JORGE PALOMINO"}, {"nombre": "ERIKA ROSSANA VILLAR ARIRUA", "dni": "47690367", "supervisor": "JOHAN MAYA"}, {"nombre": "ERIKA YESMIN PANTA MONTALVAN", "dni": "62792399", "supervisor": "LEONOR ÑAHUI"}, {"nombre": "EVELY JENNIFER TENORIO MIDMA", "dni": "70551168", "supervisor": "JORGE PALOMINO"}, {"nombre": "FLOR MARIA TINTAYA PUMACAYO", "dni": "71264767", "supervisor": "JOHAN MAYA"}, {"nombre": "FRANCO JUAN HUAMANI CUCHO", "dni": "43614775", "supervisor": "JORGE PALOMINO"}, {"nombre": "FRANK ANTONIO PACORA GARCIA", "dni": "48344037", "supervisor": "KENNETH CUBA"}, {"nombre": "GENESIS DUBEISY PALACIOS ALAMA", "dni": "75026229", "supervisor": "SANDY LOPEZ"}, {"nombre": "GENESIS LEONOR  VICUÑA ARCASI", "dni": "45262585", "supervisor": "JOHAN MAYA"}, {"nombre": "GERALDINE ARROYO TENORIO", "dni": "76089925", "supervisor": "LEONOR ÑAHUI"}, {"nombre": "GIANFRANCO PINEDO FLORES", "dni": "72512391", "supervisor": "JORGE PALOMINO"}, {"nombre": "GIANNINA RAQUEL AGUILAR MEGO", "dni": "48584670", "supervisor": "SANDY LOPEZ"}, {"nombre": "JANETT MARIA PORTOCARRERO TORRES", "dni": "40702064", "supervisor": "LEONOR ÑAHUI"}, {"nombre": "JENY LISETH QUIÑONES CHAVEZ", "dni": "43184866", "supervisor": "JORGE PALOMINO"}, {"nombre": "JEREMIAS HAGEO ROJAS HUAMAN", "dni": "76586998", "supervisor": "JOHAN MAYA"}, {"nombre": "JESSICA GABRIELA MELGAREJO CAJAHUANCA", "dni": "46793103", "supervisor": "SANDY LOPEZ"}, {"nombre": "JESSYKA YSABEL GARCIA NIÑO", "dni": "10762187", "supervisor": "LEONOR ÑAHUI"}, {"nombre": "JESUS CHRISTIAN ANIBAL ALVARADO HUARANGA", "dni": "46461021", "supervisor": "LEONOR ÑAHUI"}, {"nombre": "JHONATAN ALEXIS HECTOR CHAVEZ TINEO", "dni": "47659267", "supervisor": "JORGE PALOMINO"}, {"nombre": "JIMENA MEDINA MAMANI", "dni": "70988976", "supervisor": "KENNETH CUBA"}, {"nombre": "JOSELIN MARIVEL MONTALVO GASPAR", "dni": "73233992", "supervisor": "LEONOR ÑAHUI"}, {"nombre": "JUAN CARLOS LOZA DIAZ", "dni": "10491198", "supervisor": "KENNETH CUBA"}, {"nombre": "JUAN MANUEL ALANOCCA LAUREANO", "dni": "42251780", "supervisor": "LEONOR ÑAHUI"}, {"nombre": "KIARA ESTEFANIA CANEPA IGLESIAS", "dni": "72733809", "supervisor": "KENNETH CUBA"}, {"nombre": "LISELY ARIADNA MERA DAVILA", "dni": "72413556", "supervisor": "JORGE PALOMINO"}, {"nombre": "LUCERO JAZMIN JORDAN SARAVIA", "dni": "73257316", "supervisor": "SANDY LOPEZ"}, {"nombre": "LUIS MIGUEL VALLADARES TAIPE", "dni": "72758956", "supervisor": "SANDY LOPEZ"}, {"nombre": "LUIS STWUAR MACURI SARAVIA", "dni": "76824571", "supervisor": "KENNETH CUBA"}, {"nombre": "MALORY CRISTEL MONTEBLANCO CHICOMA", "dni": "72373931", "supervisor": "JORGE PALOMINO"}, {"nombre": "MARGARITA PIANCHACHI DIAZ", "dni": "70876605", "supervisor": "JORGE PALOMINO"}, {"nombre": "MARIA DEL CARMEN HUARCAYA ZORRILLA", "dni": "47411966", "supervisor": "SANDY LOPEZ"}, {"nombre": "MARTIN VARGAS CUSI", "dni": "47497410", "supervisor": "JOHAN MAYA"}, {"nombre": "MAYRA LEYVIS ELIZABETH AVALOS LAZO", "dni": "45119892", "supervisor": "DIGITAL"}, {"nombre": "MILAGROS QUIO HERRERA", "dni": "45139159", "supervisor": "KENNETH CUBA"}, {"nombre": "NATALIA JASMIN MARIN SANCHEZ", "dni": "71262377", "supervisor": "SANDY LOPEZ"}, {"nombre": "NICOLE KARINA CAURURO TAMARA", "dni": "75693756", "supervisor": "LEONOR ÑAHUI"}, {"nombre": "NOEMI CHUQUILIN MENDOZA", "dni": "74602206", "supervisor": "KENNETH CUBA"}, {"nombre": "PIERINA MICHEL TESEN ESPINOZA", "dni": "60870839", "supervisor": "JOHAN MAYA"}, {"nombre": "SARITA JAQUELINE GARAY JURADO", "dni": "40318129", "supervisor": "LEONOR ÑAHUI"}, {"nombre": "SONIA ISELA SULLA MARTINEZ", "dni": "10330959", "supervisor": "LEONOR ÑAHUI"}, {"nombre": "URSULA GRACIELA CENTENO POMALAZA", "dni": "10706451", "supervisor": "SANDY LOPEZ"}, {"nombre": "VERONICA ELSA HUARCA TABOADA", "dni": "43307898", "supervisor": "LEONOR ÑAHUI"}, {"nombre": "VICTOR ORLANDO RAMIREZ TORRES", "dni": "60914051", "supervisor": "SANDY LOPEZ"}], "supervisor": [{"nombre": "JOHAN DANIEL MAYA BALDEON", "dni": "75000131", "supervisor": "JOHAN MAYA"}, {"nombre": "JORGE ANTONIO PALOMINO DE LA CRUZ", "dni": "44265602", "supervisor": "JORGE PALOMINO"}, {"nombre": "KENNETH KATZUO CUBA RODRIGUEZ", "dni": "74122258", "supervisor": "KENNETH CUBA"}, {"nombre": "LEONOR MODESTA ÑAHUI NAVARRO", "dni": "46872195", "supervisor": "LEONOR ÑAHUI"}, {"nombre": "SANDY BEATRIZ LOPEZ BALVIN", "dni": "73049631", "supervisor": "SANDY LOPEZ"}], "excel_usado": "SSWO.xlsx"};
   const PASSWORDS = {"CARTA_CDNA": "24249"};
   const ACCESS_STATE = {
@@ -1053,6 +1064,18 @@
     syncAmonestadoOptionsByRol();
   }
 
+  function setCdnaTipoDoc(value) {
+      const hidden = document.getElementById('cdna_TIPO_DOC');
+      const btnDni = document.getElementById('btnDocDni');
+      const btnRuc = document.getElementById('btnDocRuc');
+    
+      if (!hidden) return;
+    
+      hidden.value = value;
+      btnDni?.classList.toggle('active', value === 'DNI');
+      btnRuc?.classList.toggle('active', value === 'RUC');
+  }
+
   function syncAmonestacionFieldsByRol() {
     const rol = (document.getElementById('amonestacion_rol_destinatario')?.value || 'asesor').trim();
     const formWrap = document.getElementById('formWrap_amonestacion');
@@ -1246,64 +1269,57 @@
   }
 
   function collectData(modelId) {
-    const cfg = MODELOS[modelId];
-    const data = {};
-
-    for (const key of cfg.placeholders) {
+      const cfg = MODELOS[modelId];
+      const data = {};
+    
+      for (const key of cfg.placeholders) {
+        if (modelId === 'cdna' && key === 'CREDITOS') {
+          data[key] = buildCreditosString();
+          continue;
+        }
+    
+        if (modelId === 'amonestacion' && key === 'tipo') {
+          data[key] = getTipoTextoFinal();
+          continue;
+        }
+    
+        const el = document.getElementById(getFieldId(modelId, key));
+        if (!el) continue;
+    
+        let v = (el.value || '').trim();
+    
+        if (cfg.date_keys.includes(key)) {
+          v = isoToLongEs(v);
+        }
+    
+        data[key] = v;
+      }
+    
       if (modelId === 'cdna') {
+        data.TIPO_DOC = (document.getElementById('cdna_TIPO_DOC')?.value || 'DNI').trim();
+        data.DOC = (document.getElementById('cdna_DOC')?.value || '').trim();
+        data.FECHA_HOY = getTodayLongEs();
         data.DETALLE_CREDITOS = buildDetalleCreditos();
       }
     
-      if (modelId === 'cdna' && key === 'CREDITOS') {
-        data[key] = buildCreditosString();
-        continue;
+      if (modelId === 'amonestacion') {
+        const rol = (document.getElementById('amonestacion_rol_destinatario')?.value || 'asesor').trim();
+    
+        data.rol_destinatario = rol;
+        data.ciudad = 'Lima';
+        data.fecha_documento = getTodayLongEs();
+        data.dni = (document.getElementById('amonestacion_dni')?.value || '').trim();
+        data.super = (document.getElementById('amonestacion_super')?.value || '').trim();
+        data.calculo = calcularPorcentajeMesActual();
+    
+        if (rol === 'asesor') {
+          data.cargo_amonestado = 'Asesor de cobranza telefónica';
+        } else if (rol === 'supervisor') {
+          data.cargo_amonestado = 'Supervisor de cobranza telefónica';
+        }
       }
     
-      if (modelId === 'cdna' && key === 'DETALLE_CREDITOS') {
-        data[key] = buildDetalleCreditos();
-        continue;
-      }
-    
-      if (modelId === 'cdna' && key === 'EXPEDIENTE') {
-        data[key] = (document.getElementById('cdna_EXPEDIENTE')?.value || '').trim();
-        continue;
-      }
-
-      if (modelId === 'amonestacion' && key === 'tipo') {
-        data[key] = getTipoTextoFinal();
-        continue;
-      }
-
-      const el = document.getElementById(getFieldId(modelId, key));
-      if (!el) continue;
-
-      let v = (el.value || '').trim();
-
-      if (cfg.date_keys.includes(key)) {
-        v = isoToLongEs(v);
-      }
-
-      data[key] = v;
-    }
-
-    if (modelId === 'amonestacion') {
-      const rol = (document.getElementById('amonestacion_rol_destinatario')?.value || 'asesor').trim();
-    
-      data.rol_destinatario = rol;
-      data.ciudad = 'Lima';
-      data.fecha_documento = getTodayLongEs();
-      data.dni = (document.getElementById('amonestacion_dni')?.value || '').trim();
-      data.super = (document.getElementById('amonestacion_super')?.value || '').trim();
-      data.calculo = calcularPorcentajeMesActual();
-    
-      if (rol === 'asesor') {
-        data.cargo_amonestado = 'Asesor de cobranza telefónica';
-      } else if (rol === 'supervisor') {
-        data.cargo_amonestado = 'Supervisor de cobranza telefónica';
-      }
-    }
-
-    return data;
+      return data;
   }
 
   async function imageToBase64(img) {
@@ -1779,6 +1795,14 @@
     setRolDestinatario('supervisor');
   });
 
+  document.getElementById('btnDocDni')?.addEventListener('click', () => {
+    setCdnaTipoDoc('DNI');
+  });
+
+  document.getElementById('btnDocRuc')?.addEventListener('click', () => {
+    setCdnaTipoDoc('RUC');
+  });
+
   btnEditar?.addEventListener('click', showForm);
 
   document.addEventListener('click', (e) => {
@@ -1908,11 +1932,12 @@
     window.print();
   });
 
-  setRolDestinatario('asesor');
-  syncAmonestadoOptionsByRol();
-  syncDiasButtonsFromInput();
-  syncCantidadDesdeDias();
-  switchModel('amonestacion');
+    setRolDestinatario('asesor');
+    setCdnaTipoDoc('DNI');
+    syncAmonestadoOptionsByRol();
+    syncDiasButtonsFromInput();
+    syncCantidadDesdeDias();
+    switchModel('amonestacion');
 </script>
 
 </body>
