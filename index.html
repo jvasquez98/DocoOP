@@ -956,7 +956,7 @@
     </template>
 
 <script>
-  const MODELOS = {"cdna": {"id": "cdna", "nombre": "CARTA DE NO ADEUDO", "placeholders": ["DOC", "NOMBRE", "FECHA_PAGO", "ENTIDAD", "FECHA_CASTIGO", "CREDITOS", "firma"], "labels": {"FECHA_HOY": "Fecha de emisión", "TIPO_DOC": "Tipo de documento", "DOC": "N° de documento", "NOMBRE": "Nombre completo", "ENTIDAD": "Entidad (banco / empresa)", "FECHA_CASTIGO": "Fecha de cesión / castigo", "CREDITOS": "Créditos", "FECHA_PAGO": "Fecha de pago"}, "date_keys": ["FECHA_CASTIGO", "FECHA_HOY", "FECHA_PAGO"], "select_keys": ["ENTIDAD"], "textarea_keys": [], "defaults": {}, "role_scopes": {"DOC": "all", "NOMBRE": "all", "FECHA_PAGO": "all", "ENTIDAD": "all", "FECHA_CASTIGO": "all", "CREDITOS": "all", "firma": "all"}}, "amonestacion": {"id": "amonestacion", "nombre": "AMONESTACIÓN", "placeholders": ["code", "amonestado", "dni", "tipo", "dias", "cantidad", "super", "tiempo"], "labels": {"ciudad": "Ciudad", "fecha_documento": "Fecha del documento", "amonestado": "Amonestado", "dni": "DNI", "cargo_amonestado": "Cargo del amonestado", "cantidad": "Cantidad", "tipo": "Tipo", "dias": "Días", "calculo": "Cálculo del mes", "tiempo": "Tiempo acumulado", "super": "Supervisor firmante", "rol_destinatario": "Tipo de destinatario", "code": "N° de memorando"}, "date_keys": [], "select_keys": [], "textarea_keys": [], "defaults": {"ciudad": "Lima", "fecha_documento": ""}, "role_scopes": {"tipo": "all", "code": "all", "dias": "all", "super": "asesor", "cantidad": "all", "tiempo": "supervisor", "amonestado": "all", "dni": "all"}}};
+  const MODELOS = {"cdna": {"id": "cdna", "nombre": "CARTA DE NO ADEUDO", "placeholders": ["DOC", "NOMBRE", "FECHA_PAGO", "ENTIDAD", "FECHA_CASTIGO", "CREDITOS", "firma"], "labels": {"FECHA_HOY": "Fecha de emisión", "TIPO_DOC": "Tipo de documento", "DOC": "N° de documento", "NOMBRE": "Nombre completo", "ENTIDAD": "Entidad (banco / empresa)", "FECHA_CASTIGO": "Fecha de cesión / castigo", "CREDITOS": "Créditos", "FECHA_PAGO": "Fecha de pago"}, "date_keys": ["FECHA_CASTIGO", "FECHA_HOY", "FECHA_PAGO"], "select_keys": ["ENTIDAD"], "textarea_keys": [], "defaults": {}, "role_scopes": {"DOC": "all", "NOMBRE": "all", "FECHA_PAGO": "all", "ENTIDAD": "all", "FECHA_CASTIGO": "all", "CREDITOS": "all", "firma": "all"}}, "amonestacion": {"id": "amonestacion", "nombre": "AMONESTACIÓN", "placeholders": ["code", "amonestado", "dni", "tipo", "dias", "cantidad", "super", "tiempo"], "labels": {"ciudad": "Ciudad", "fecha_documento": "Fecha del documento", "amonestado": "Amonestado", "dni": "DNI", "cargo_amonestado": "Cargo del amonestado", "cantidad": "Cantidad", "tipo": "Tipo", "dias": "Días", "calculo": "Cálculo del mes", "tiempo": "Tiempo acumulado", "super": "Supervisor firmante", "rol_destinatario": "Tipo de destinatario", "code": "N° de memorando"}, "date_keys": [], "select_keys": [], "textarea_keys": [], "defaults": {"ciudad": "Lima", "fecha_documento": ""}, "role_scopes": {"super": "asesor", "tiempo": "supervisor", "code": "all", "amonestado": "all", "tipo": "all", "dias": "all", "cantidad": "all", "dni": "all"}}};
   const CATALOGO_AMONESTACION = {"asesor": [{"nombre": "ALEJANDRA QUISPE", "dni": "72519113", "supervisor": "SANDY LOPEZ"}, {"nombre": "ALEJANDRO GONZALES", "dni": "74626735", "supervisor": "JOHAN MAYA"}, {"nombre": "ANALUCIA PONCE", "dni": "72839865", "supervisor": "SANDY LOPEZ"}, {"nombre": "ANDERSON RODRIGUEZ", "dni": "47587400", "supervisor": "JORGE PALOMINO"}, {"nombre": "ANTHONY VICENTE", "dni": "70477743", "supervisor": "SANDY LOPEZ"}, {"nombre": "CARMEN PUMA", "dni": "76656128", "supervisor": "KENNETH CUBA"}, {"nombre": "CHRISTIAN ALVARADO", "dni": "46461021", "supervisor": "JOHAN MAYA"}, {"nombre": "CRISTINA TICONA", "dni": "44001162", "supervisor": "JOHAN MAYA"}, {"nombre": "DANIEL ZAPATA", "dni": "45084594", "supervisor": "JOHAN MAYA"}, {"nombre": "DAVID SANCHEZ", "dni": "72716299", "supervisor": "JORGE PALOMINO"}, {"nombre": "ERIKA PANTA", "dni": "62792399", "supervisor": "JOHAN MAYA"}, {"nombre": "ERIKA VILLAR", "dni": "47690367", "supervisor": "JOHAN MAYA"}, {"nombre": "EVELY TENORIO", "dni": "70551168", "supervisor": "SANDY LOPEZ"}, {"nombre": "FERNANDA APAZA", "dni": "73623874", "supervisor": "LEONOR ÑAHUI"}, {"nombre": "FRANCO HUAMANI", "dni": "43614775", "supervisor": "JORGE PALOMINO"}, {"nombre": "FRANK PACORA", "dni": "48344037", "supervisor": "KENNETH CUBA"}, {"nombre": "GENESIS PALACIOS", "dni": "75026229", "supervisor": "SANDY LOPEZ"}, {"nombre": "GENESIS VICUNA", "dni": "45262585", "supervisor": "JOHAN MAYA"}, {"nombre": "GERALDINE ARROYO", "dni": "76089925", "supervisor": "JOHAN MAYA"}, {"nombre": "GIANFRANCO PINEDO", "dni": "72512391", "supervisor": "JORGE PALOMINO"}, {"nombre": "GIANNINA AGUILAR", "dni": "48584670", "supervisor": "SANDY LOPEZ"}, {"nombre": "HAROLD FLORES", "dni": "73725129", "supervisor": "SANDY LOPEZ"}, {"nombre": "JANETH PORTOCARRERO", "dni": "40702064", "supervisor": "LEONOR ÑAHUI"}, {"nombre": "JENY LAZARO", "dni": "41005089", "supervisor": "JOHAN MAYA"}, {"nombre": "JENY QUINONES", "dni": "43184866", "supervisor": "JOHAN MAYA"}, {"nombre": "JEREMY RODRIGUEZ", "dni": "42227234", "supervisor": "LEONOR ÑAHUI"}, {"nombre": "JESSICA MELGAREJO", "dni": "46793103", "supervisor": "SANDY LOPEZ"}, {"nombre": "JHONATAN CHAVEZ", "dni": "47659267", "supervisor": "JORGE PALOMINO"}, {"nombre": "JIMENA MEDINA", "dni": "70988976", "supervisor": "LEONOR ÑAHUI"}, {"nombre": "JOSELIN MONTALVO", "dni": "73233992", "supervisor": "LEONOR ÑAHUI"}, {"nombre": "JUAN ALANOCCA", "dni": "42251780", "supervisor": "LEONOR ÑAHUI"}, {"nombre": "JUAN LOZA", "dni": "10491198", "supervisor": "KENNETH CUBA"}, {"nombre": "KATHERINE QUISPE", "dni": "72505926", "supervisor": "LEONOR ÑAHUI"}, {"nombre": "KIARA CANEPA", "dni": "72733809", "supervisor": "LEONOR ÑAHUI"}, {"nombre": "LUCERO JORDAN", "dni": "73257316", "supervisor": "SANDY LOPEZ"}, {"nombre": "LUIS CENTENO", "dni": "75882265", "supervisor": "KENNETH CUBA"}, {"nombre": "MALORY MONTEBLANCO", "dni": "72373931", "supervisor": "JORGE PALOMINO"}, {"nombre": "MARIA HUARCAYA", "dni": "47411966", "supervisor": "KENNETH CUBA"}, {"nombre": "MARIA TINTAYA", "dni": "71264767", "supervisor": "SANDY LOPEZ"}, {"nombre": "MAYRA AVALOS", "dni": "45119892", "supervisor": "LEONOR ÑAHUI"}, {"nombre": "MILAGROS QUIO", "dni": "45139159", "supervisor": "KENNETH CUBA"}, {"nombre": "NATALIA MARIN", "dni": "71262377", "supervisor": "SANDY LOPEZ"}, {"nombre": "NOEMI CHUQUILIN", "dni": "74602206", "supervisor": "KENNETH CUBA"}, {"nombre": "PIERINA TESEN", "dni": "60870839", "supervisor": "JORGE PALOMINO"}, {"nombre": "SARITA GARAY", "dni": "40318129", "supervisor": "LEONOR ÑAHUI"}, {"nombre": "STWUAR MACURI", "dni": "76824571", "supervisor": "KENNETH CUBA"}, {"nombre": "URSULA CENTENO", "dni": "10706451", "supervisor": "LEONOR ÑAHUI"}, {"nombre": "VERONICA TASAYCO", "dni": "40980108", "supervisor": "JORGE PALOMINO"}, {"nombre": "VICTOR RAMIREZ", "dni": "60914051", "supervisor": "JORGE PALOMINO"}], "supervisor": [{"nombre": "JOHAN MAYA", "dni": "75000131", "supervisor": "JOHAN MAYA"}, {"nombre": "JORGE PALOMINO", "dni": "44265602", "supervisor": "JORGE PALOMINO"}, {"nombre": "KENNETH CUBA", "dni": "74122258", "supervisor": "KENNETH CUBA"}, {"nombre": "LEONOR NAVARRO", "dni": "46872195", "supervisor": "LEONOR ÑAHUI"}, {"nombre": "LISELY MERA", "dni": "72413556", "supervisor": "LISELY"}, {"nombre": "SANDY LOPEZ", "dni": "73049631", "supervisor": "SANDY LOPEZ"}], "excel_usado": "SSWO.xlsx"};
   const PASSWORDS = {"CARTA_CDNA": "24249"};
   const ACCESS_STATE = {
@@ -1401,8 +1401,8 @@
   function applySingularPluralByCreditos(text) {
     const n = Number(document.getElementById('cdna_CREDITOS_COUNT')?.value || 1);
     const isSingular = (n === 1);
-    const reSing = /\\{\\{\\s*singular\\s*\\}\\}([\\s\\S]*?)\\{\\{\\s*\\/singular\\s*\\}\\}/gi;
-    const rePlur = /\\{\\{\\s*plural\\s*\\}\\}([\\s\\S]*?)\\{\\{\\s*\\/plural\\s*\\}\\}/gi;
+    const reSing = /\{\{\s*singular\s*\}\}([\s\S]*?)\{\{\s*\/singular\s*\}\}/gi;
+    const rePlur = /\{\{\s*plural\s*\}\}([\s\S]*?)\{\{\s*\/plural\s*\}\}/gi;
 
     if (isSingular) {
       text = text.replace(reSing, '$1');
@@ -1417,20 +1417,20 @@
 
   function applyJudicialBlock(text) {
     const on = !!document.getElementById('cdna_JUDICIAL')?.checked;
-    const reJud = /\\{\\{\\s*judicial\\s*\\}\\}([\\s\\S]*?)\\{\\{\\s*\\/judicial\\s*\\}\\}/gi;
+    const reJud = /\{\{\s*judicial\s*\}\}([\s\S]*?)\{\{\s*\/judicial\s*\}\}/gi;
     return on ? text.replace(reJud, '$1') : text.replace(reJud, '');
   }
 
   function applyFirmaBlock(text) {
     const incluir = document.getElementById('cdna_INCLUIR_FIRMA')?.checked !== false;
-    const reFirma = /\\{\\{\\s*firma\\s*\\}\\}([\\s\\S]*?)\\{\\{\\s*\\/firma\\s*\\}\\}/gi;
+    const reFirma = /\{\{\s*firma\s*\}\}([\s\S]*?)\{\{\s*\/firma\s*\}\}/gi;
     return incluir ? text.replace(reFirma, '$1') : text.replace(reFirma, '');
   }
 
   function applyRolBlocks(text) {
     const rol = (document.getElementById('amonestacion_rol_destinatario')?.value || '').trim();
-    const reAsesor = /\\{\\{\\s*asesor\\s*\\}\\}([\\s\\S]*?)\\{\\{\\s*\\/asesor\\s*\\}\\}/gi;
-    const reSupervisor = /\\{\\{\\s*supervisor\\s*\\}\\}([\\s\\S]*?)\\{\\{\\s*\\/supervisor\\s*\\}\\}/gi;
+    const reAsesor = /\{\{\s*asesor\s*\}\}([\s\S]*?)\{\{\s*\/asesor\s*\}\}/gi;
+    const reSupervisor = /\{\{\s*supervisor\s*\}\}([\s\S]*?)\{\{\s*\/supervisor\s*\}\}/gi;
 
     if (rol === 'asesor') {
       text = text.replace(reAsesor, '$1');
@@ -1447,7 +1447,7 @@
   }
 
   function applyTemplate(templateStr, data) {
-    return templateStr.replace(/\\{\\{\\s*([A-Za-z0-9_]+)\\s*\\}\\}/g, (match, key) => {
+    return templateStr.replace(/\{\{\s*([A-Za-z0-9_]+)\s*\}\}/g, (match, key) => {
       const v = data[key];
       return (v === undefined || v === null || v === '') ? match : String(v);
     });
