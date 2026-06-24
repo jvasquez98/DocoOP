@@ -956,7 +956,7 @@
     </template>
 
 <script>
-  const MODELOS = {"cdna": {"id": "cdna", "nombre": "CARTA DE NO ADEUDO", "placeholders": ["DOC", "NOMBRE", "FECHA_PAGO", "ENTIDAD", "FECHA_CASTIGO", "CREDITOS", "firma"], "labels": {"FECHA_HOY": "Fecha de emisión", "TIPO_DOC": "Tipo de documento", "DOC": "N° de documento", "NOMBRE": "Nombre completo", "ENTIDAD": "Entidad (banco / empresa)", "FECHA_CASTIGO": "Fecha de cesión / castigo", "CREDITOS": "Créditos", "FECHA_PAGO": "Fecha de pago"}, "date_keys": ["FECHA_CASTIGO", "FECHA_HOY", "FECHA_PAGO"], "select_keys": ["ENTIDAD"], "textarea_keys": [], "defaults": {}, "role_scopes": {"DOC": "all", "NOMBRE": "all", "FECHA_PAGO": "all", "ENTIDAD": "all", "FECHA_CASTIGO": "all", "CREDITOS": "all", "firma": "all"}}, "amonestacion": {"id": "amonestacion", "nombre": "AMONESTACIÓN", "placeholders": ["code", "amonestado", "dni", "tipo", "dias", "cantidad", "super", "tiempo"], "labels": {"ciudad": "Ciudad", "fecha_documento": "Fecha del documento", "amonestado": "Amonestado", "dni": "DNI", "cargo_amonestado": "Cargo del amonestado", "cantidad": "Cantidad", "tipo": "Tipo", "dias": "Días", "calculo": "Cálculo del mes", "tiempo": "Tiempo acumulado", "super": "Supervisor firmante", "rol_destinatario": "Tipo de destinatario", "code": "N° de memorando"}, "date_keys": [], "select_keys": [], "textarea_keys": [], "defaults": {"ciudad": "Lima", "fecha_documento": ""}, "role_scopes": {"super": "asesor", "tiempo": "supervisor", "code": "all", "amonestado": "all", "tipo": "all", "dias": "all", "cantidad": "all", "dni": "all"}}};
+  const MODELOS = {"cdna": {"id": "cdna", "nombre": "CARTA DE NO ADEUDO", "placeholders": ["DOC", "NOMBRE", "FECHA_PAGO", "ENTIDAD", "FECHA_CASTIGO", "CREDITOS", "firma"], "labels": {"FECHA_HOY": "Fecha de emisión", "TIPO_DOC": "Tipo de documento", "DOC": "N° de documento", "NOMBRE": "Nombre completo", "ENTIDAD": "Entidad (banco / empresa)", "FECHA_CASTIGO": "Fecha de cesión / castigo", "CREDITOS": "Créditos", "FECHA_PAGO": "Fecha de pago"}, "date_keys": ["FECHA_CASTIGO", "FECHA_HOY", "FECHA_PAGO"], "select_keys": ["ENTIDAD"], "textarea_keys": [], "defaults": {}, "role_scopes": {"DOC": "all", "NOMBRE": "all", "FECHA_PAGO": "all", "ENTIDAD": "all", "FECHA_CASTIGO": "all", "CREDITOS": "all", "firma": "all"}}, "amonestacion": {"id": "amonestacion", "nombre": "AMONESTACIÓN", "placeholders": ["code", "amonestado", "dni", "tipo", "dias", "cantidad", "super", "tiempo"], "labels": {"ciudad": "Ciudad", "fecha_documento": "Fecha del documento", "amonestado": "Amonestado", "dni": "DNI", "cargo_amonestado": "Cargo del amonestado", "cantidad": "Cantidad", "tipo": "Tipo", "dias": "Días", "calculo": "Cálculo del mes", "tiempo": "Tiempo acumulado", "super": "Supervisor firmante", "rol_destinatario": "Tipo de destinatario", "code": "N° de memorando"}, "date_keys": [], "select_keys": [], "textarea_keys": [], "defaults": {"ciudad": "Lima", "fecha_documento": ""}, "role_scopes": {"tiempo": "supervisor", "tipo": "all", "code": "all", "cantidad": "all", "super": "asesor", "amonestado": "all", "dias": "all", "dni": "all"}}};
   const CATALOGO_AMONESTACION = {"asesor": [{"nombre": "ALEJANDRA QUISPE", "dni": "72519113", "supervisor": "SANDY LOPEZ"}, {"nombre": "ALEJANDRO GONZALES", "dni": "74626735", "supervisor": "JOHAN MAYA"}, {"nombre": "ANALUCIA PONCE", "dni": "72839865", "supervisor": "SANDY LOPEZ"}, {"nombre": "ANDERSON RODRIGUEZ", "dni": "47587400", "supervisor": "JORGE PALOMINO"}, {"nombre": "ANTHONY VICENTE", "dni": "70477743", "supervisor": "SANDY LOPEZ"}, {"nombre": "CARMEN PUMA", "dni": "76656128", "supervisor": "KENNETH CUBA"}, {"nombre": "CHRISTIAN ALVARADO", "dni": "46461021", "supervisor": "JOHAN MAYA"}, {"nombre": "CRISTINA TICONA", "dni": "44001162", "supervisor": "JOHAN MAYA"}, {"nombre": "DANIEL ZAPATA", "dni": "45084594", "supervisor": "JOHAN MAYA"}, {"nombre": "DAVID SANCHEZ", "dni": "72716299", "supervisor": "JORGE PALOMINO"}, {"nombre": "ERIKA PANTA", "dni": "62792399", "supervisor": "JOHAN MAYA"}, {"nombre": "ERIKA VILLAR", "dni": "47690367", "supervisor": "JOHAN MAYA"}, {"nombre": "EVELY TENORIO", "dni": "70551168", "supervisor": "SANDY LOPEZ"}, {"nombre": "FERNANDA APAZA", "dni": "73623874", "supervisor": "LEONOR ÑAHUI"}, {"nombre": "FRANCO HUAMANI", "dni": "43614775", "supervisor": "JORGE PALOMINO"}, {"nombre": "FRANK PACORA", "dni": "48344037", "supervisor": "KENNETH CUBA"}, {"nombre": "GENESIS PALACIOS", "dni": "75026229", "supervisor": "SANDY LOPEZ"}, {"nombre": "GENESIS VICUNA", "dni": "45262585", "supervisor": "JOHAN MAYA"}, {"nombre": "GERALDINE ARROYO", "dni": "76089925", "supervisor": "JOHAN MAYA"}, {"nombre": "GIANFRANCO PINEDO", "dni": "72512391", "supervisor": "JORGE PALOMINO"}, {"nombre": "GIANNINA AGUILAR", "dni": "48584670", "supervisor": "SANDY LOPEZ"}, {"nombre": "HAROLD FLORES", "dni": "73725129", "supervisor": "SANDY LOPEZ"}, {"nombre": "JANETH PORTOCARRERO", "dni": "40702064", "supervisor": "LEONOR ÑAHUI"}, {"nombre": "JENY LAZARO", "dni": "41005089", "supervisor": "JOHAN MAYA"}, {"nombre": "JENY QUINONES", "dni": "43184866", "supervisor": "JOHAN MAYA"}, {"nombre": "JEREMY RODRIGUEZ", "dni": "42227234", "supervisor": "LEONOR ÑAHUI"}, {"nombre": "JESSICA MELGAREJO", "dni": "46793103", "supervisor": "SANDY LOPEZ"}, {"nombre": "JHONATAN CHAVEZ", "dni": "47659267", "supervisor": "JORGE PALOMINO"}, {"nombre": "JIMENA MEDINA", "dni": "70988976", "supervisor": "LEONOR ÑAHUI"}, {"nombre": "JOSELIN MONTALVO", "dni": "73233992", "supervisor": "LEONOR ÑAHUI"}, {"nombre": "JUAN ALANOCCA", "dni": "42251780", "supervisor": "LEONOR ÑAHUI"}, {"nombre": "JUAN LOZA", "dni": "10491198", "supervisor": "KENNETH CUBA"}, {"nombre": "KATHERINE QUISPE", "dni": "72505926", "supervisor": "LEONOR ÑAHUI"}, {"nombre": "KIARA CANEPA", "dni": "72733809", "supervisor": "LEONOR ÑAHUI"}, {"nombre": "LUCERO JORDAN", "dni": "73257316", "supervisor": "SANDY LOPEZ"}, {"nombre": "LUIS CENTENO", "dni": "75882265", "supervisor": "KENNETH CUBA"}, {"nombre": "MALORY MONTEBLANCO", "dni": "72373931", "supervisor": "JORGE PALOMINO"}, {"nombre": "MARIA HUARCAYA", "dni": "47411966", "supervisor": "KENNETH CUBA"}, {"nombre": "MARIA TINTAYA", "dni": "71264767", "supervisor": "SANDY LOPEZ"}, {"nombre": "MAYRA AVALOS", "dni": "45119892", "supervisor": "LEONOR ÑAHUI"}, {"nombre": "MILAGROS QUIO", "dni": "45139159", "supervisor": "KENNETH CUBA"}, {"nombre": "NATALIA MARIN", "dni": "71262377", "supervisor": "SANDY LOPEZ"}, {"nombre": "NOEMI CHUQUILIN", "dni": "74602206", "supervisor": "KENNETH CUBA"}, {"nombre": "PIERINA TESEN", "dni": "60870839", "supervisor": "JORGE PALOMINO"}, {"nombre": "SARITA GARAY", "dni": "40318129", "supervisor": "LEONOR ÑAHUI"}, {"nombre": "STWUAR MACURI", "dni": "76824571", "supervisor": "KENNETH CUBA"}, {"nombre": "URSULA CENTENO", "dni": "10706451", "supervisor": "LEONOR ÑAHUI"}, {"nombre": "VERONICA TASAYCO", "dni": "40980108", "supervisor": "JORGE PALOMINO"}, {"nombre": "VICTOR RAMIREZ", "dni": "60914051", "supervisor": "JORGE PALOMINO"}], "supervisor": [{"nombre": "JOHAN MAYA", "dni": "75000131", "supervisor": "JOHAN MAYA"}, {"nombre": "JORGE PALOMINO", "dni": "44265602", "supervisor": "JORGE PALOMINO"}, {"nombre": "KENNETH CUBA", "dni": "74122258", "supervisor": "KENNETH CUBA"}, {"nombre": "LEONOR NAVARRO", "dni": "46872195", "supervisor": "LEONOR ÑAHUI"}, {"nombre": "LISELY MERA", "dni": "72413556", "supervisor": "LISELY"}, {"nombre": "SANDY LOPEZ", "dni": "73049631", "supervisor": "SANDY LOPEZ"}], "excel_usado": "SSWO.xlsx"};
   const PASSWORDS = {"CARTA_CDNA": "24249"};
   const ACCESS_STATE = {
@@ -1534,14 +1534,31 @@
   }
 
   async function imageToBase64(img) {
-      const src = img.getAttribute('src');
+      const src = img.currentSrc || img.src || img.getAttribute('src');
       if (!src) return null;
     
       if (src.startsWith('data:')) {
         return src;
       }
-    
-      return null;
+
+      try {
+        if (!img.complete || !img.naturalWidth) {
+          await img.decode();
+        }
+
+        const canvas = document.createElement('canvas');
+        canvas.width = img.naturalWidth;
+        canvas.height = img.naturalHeight;
+
+        const ctx = canvas.getContext('2d');
+        if (!ctx) throw new Error('No se pudo crear el contexto de imagen.');
+
+        ctx.drawImage(img, 0, 0);
+        return canvas.toDataURL('image/png');
+      } catch (err) {
+        console.warn('No se pudo convertir la imagen a base64; se conservará su ruta:', src, err);
+        return src;
+      }
   }
     
   async function clonarCartaConImagenesEmbebidas() {
@@ -1558,13 +1575,7 @@
         const base64 = await imageToBase64(imgsOriginal[i]);
     
         if (imgsClon[i]) {
-          if (base64) {
-            imgsClon[i].setAttribute('src', base64);
-          } else {
-            console.warn('⚠️ Se eliminará imagen porque no pudo convertirse:', imgsOriginal[i].getAttribute('src'));
-            imgsClon[i].remove();
-            continue;
-          }
+          if (base64) imgsClon[i].setAttribute('src', base64);
     
           if (imgsClon[i].classList.contains('logo')) {
             imgsClon[i].setAttribute('width', '140');
@@ -1877,8 +1888,49 @@
     `.trim();
   }
     
-  function descargarArchivo(nombre, contenido, mimeType) {
-    const blob = new Blob(['\ufeff', contenido], { type: mimeType });
+  function buildWordMhtml(contentHtml) {
+    const boundary = '----=_NextPart_Codex_Document';
+    const imageParts = [];
+    let imageIndex = 0;
+
+    const htmlConReferencias = contentHtml.replace(
+      /src=(["'])data:([^;]+);base64,([^"']+)\1/g,
+      (match, quote, mimeType, base64Data) => {
+        imageIndex += 1;
+        const extension = mimeType.includes('png') ? 'png' : 'jpg';
+        const contentId = 'imagen' + imageIndex + '.' + extension;
+        const base64ConSaltos = base64Data.replace(/(.{76})/g, '$1\r\n');
+
+        imageParts.push(
+          '--' + boundary + '\r\n' +
+          'Content-Type: ' + mimeType + '\r\n' +
+          'Content-Transfer-Encoding: base64\r\n' +
+          'Content-Location: ' + contentId + '\r\n' +
+          'Content-ID: <' + contentId + '>\r\n\r\n' +
+          base64ConSaltos + '\r\n'
+        );
+
+        return 'src=' + quote + 'cid:' + contentId + quote;
+      }
+    );
+
+    const htmlWord = buildWordHtml(htmlConReferencias);
+
+    return (
+      'MIME-Version: 1.0\r\n' +
+      'Content-Type: multipart/related; boundary="' + boundary + '"\r\n\r\n' +
+      '--' + boundary + '\r\n' +
+      'Content-Type: text/html; charset="utf-8"\r\n' +
+      'Content-Transfer-Encoding: 8bit\r\n\r\n' +
+      htmlWord + '\r\n' +
+      imageParts.join('') +
+      '--' + boundary + '--'
+    );
+  }
+
+  function descargarArchivo(nombre, contenido, mimeType, incluirBom = true) {
+    const partes = incluirBom ? ['\ufeff', contenido] : [contenido];
+    const blob = new Blob(partes, { type: mimeType });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
@@ -1939,10 +1991,10 @@
   async function exportarWord() {
     try {
     const clon = await clonarCartaConImagenesEmbebidas();
-    const htmlWord = buildWordHtml(clon.outerHTML);
+    const htmlWord = buildWordMhtml(clon.outerHTML);
     const nombre = buildWordFileName();
     
-    descargarArchivo(nombre, htmlWord, 'application/msword');
+    descargarArchivo(nombre, htmlWord, 'application/msword', false);
     } catch (err) {
     console.error(err);
     alert('No se pudo exportar el documento a Word.');
