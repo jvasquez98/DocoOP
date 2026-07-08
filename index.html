@@ -486,6 +486,33 @@
     }
 
     /* ===== AMONESTACIÓN ===== */
+    body.word-memo{
+      font-family: Tahoma, Arial, sans-serif;
+      font-size:10pt;
+      line-height:1.15;
+      color:#111;
+    }
+
+    body.word-memo .doc-header{
+      position:static;
+      top:auto;
+      left:auto;
+      right:auto;
+      margin:0;
+    }
+
+    body.word-memo .header-top{
+      display:block;
+      margin:0 0 8pt 0;
+    }
+
+    body.word-memo .logo{
+      width:132px !important;
+      height:auto !important;
+      display:block;
+      margin:0;
+    }
+
     .memo-wrap{
       font-size:10.5pt;
       color:#111;
@@ -956,7 +983,7 @@
     </template>
 
 <script>
-  const MODELOS = {"cdna": {"id": "cdna", "nombre": "CARTA DE NO ADEUDO", "placeholders": ["DOC", "NOMBRE", "FECHA_PAGO", "ENTIDAD", "FECHA_CASTIGO", "CREDITOS", "firma"], "labels": {"FECHA_HOY": "Fecha de emisión", "TIPO_DOC": "Tipo de documento", "DOC": "N° de documento", "NOMBRE": "Nombre completo", "ENTIDAD": "Entidad (banco / empresa)", "FECHA_CASTIGO": "Fecha de cesión / castigo", "CREDITOS": "Créditos", "FECHA_PAGO": "Fecha de pago"}, "date_keys": ["FECHA_CASTIGO", "FECHA_HOY", "FECHA_PAGO"], "select_keys": ["ENTIDAD"], "textarea_keys": [], "defaults": {}, "role_scopes": {"DOC": "all", "NOMBRE": "all", "FECHA_PAGO": "all", "ENTIDAD": "all", "FECHA_CASTIGO": "all", "CREDITOS": "all", "firma": "all"}}, "amonestacion": {"id": "amonestacion", "nombre": "AMONESTACIÓN", "placeholders": ["code", "amonestado", "dni", "tipo", "dias", "cantidad", "super", "tiempo"], "labels": {"ciudad": "Ciudad", "fecha_documento": "Fecha del documento", "amonestado": "Amonestado", "dni": "DNI", "cargo_amonestado": "Cargo del amonestado", "cantidad": "Cantidad", "tipo": "Tipo", "dias": "Días", "calculo": "Cálculo del mes", "tiempo": "Tiempo acumulado", "super": "Supervisor firmante", "rol_destinatario": "Tipo de destinatario", "code": "N° de memorando"}, "date_keys": [], "select_keys": [], "textarea_keys": [], "defaults": {"ciudad": "Lima", "fecha_documento": ""}, "role_scopes": {"dias": "all", "amonestado": "all", "code": "all", "cantidad": "all", "super": "asesor", "tiempo": "supervisor", "tipo": "all", "dni": "all"}}};
+  const MODELOS = {"cdna": {"id": "cdna", "nombre": "CARTA DE NO ADEUDO", "placeholders": ["DOC", "NOMBRE", "FECHA_PAGO", "ENTIDAD", "FECHA_CASTIGO", "CREDITOS", "firma"], "labels": {"FECHA_HOY": "Fecha de emisión", "TIPO_DOC": "Tipo de documento", "DOC": "N° de documento", "NOMBRE": "Nombre completo", "ENTIDAD": "Entidad (banco / empresa)", "FECHA_CASTIGO": "Fecha de cesión / castigo", "CREDITOS": "Créditos", "FECHA_PAGO": "Fecha de pago"}, "date_keys": ["FECHA_CASTIGO", "FECHA_HOY", "FECHA_PAGO"], "select_keys": ["ENTIDAD"], "textarea_keys": [], "defaults": {}, "role_scopes": {"DOC": "all", "NOMBRE": "all", "FECHA_PAGO": "all", "ENTIDAD": "all", "FECHA_CASTIGO": "all", "CREDITOS": "all", "firma": "all"}}, "amonestacion": {"id": "amonestacion", "nombre": "AMONESTACIÓN", "placeholders": ["code", "amonestado", "dni", "tipo", "dias", "cantidad", "super", "tiempo"], "labels": {"ciudad": "Ciudad", "fecha_documento": "Fecha del documento", "amonestado": "Amonestado", "dni": "DNI", "cargo_amonestado": "Cargo del amonestado", "cantidad": "Cantidad", "tipo": "Tipo", "dias": "Días", "calculo": "Cálculo del mes", "tiempo": "Tiempo acumulado", "super": "Supervisor firmante", "rol_destinatario": "Tipo de destinatario", "code": "N° de memorando"}, "date_keys": [], "select_keys": [], "textarea_keys": [], "defaults": {"ciudad": "Lima", "fecha_documento": ""}, "role_scopes": {"tiempo": "supervisor", "dias": "all", "amonestado": "all", "cantidad": "all", "code": "all", "tipo": "all", "super": "asesor", "dni": "all"}}};
   const CATALOGO_AMONESTACION = {"asesor": [{"nombre": "ADELAIDA VILLANUEVA", "dni": "", "supervisor": "GUSTAVO TORRES", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "ALCIDES VASQUEZ", "dni": "", "supervisor": "LUIS AGUANAR", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "ALEIDITH GUEVARA", "dni": "76214436", "supervisor": "KENNETH CUBA", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "ALEJANDRA QUISPE", "dni": "72519113", "supervisor": "SANDY LOPEZ", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "ALEJANDRO GONZALES", "dni": "74626735", "supervisor": "MELINA AYRE", "faltas_dias": [], "tardanzas_dias": ["07"], "tardanza_tiempos": {"07": "0.004884258925925922"}}, {"nombre": "ANALUCIA PONCE", "dni": "72839865", "supervisor": "SANDY LOPEZ", "faltas_dias": [], "tardanzas_dias": ["07"], "tardanza_tiempos": {"07": "0.041724536703703685"}}, {"nombre": "ANDERSON RODRIGUEZ", "dni": "47587400", "supervisor": "MELINA AYRE", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "ANGELA CABRERA", "dni": "", "supervisor": "ANITA AGAMA", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "ANNETTE VALDEZ", "dni": "", "supervisor": "DIEGO VASQUEZ", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "ANTHONY VICENTE", "dni": "70477743", "supervisor": "SANDY LOPEZ", "faltas_dias": [], "tardanzas_dias": ["07"], "tardanza_tiempos": {"07": "0.008865740407407396"}}, {"nombre": "BLANCA HERHUAY", "dni": "", "supervisor": "ANITA AGAMA", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "BRINA SOTO", "dni": "", "supervisor": "LUIS AGUANAR", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "CARMEN BAHAMONDE", "dni": "", "supervisor": "BRYAN VELASQUEZ", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "CARMEN PUMA", "dni": "76656128", "supervisor": "KENNETH CUBA", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "CHRISTIAN ALVARADO", "dni": "46461021", "supervisor": "MELINA AYRE", "faltas_dias": [], "tardanzas_dias": ["07"], "tardanza_tiempos": {"07": "0.003032407074074095"}}, {"nombre": "CRISTINA BELENO", "dni": "", "supervisor": "ANITA AGAMA", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "CRISTINA TICONA", "dni": "44001162", "supervisor": "SANDY LOPEZ", "faltas_dias": [], "tardanzas_dias": ["07"], "tardanza_tiempos": {"07": "0.0013310181851851621"}}, {"nombre": "CYNTHIA OSORIO", "dni": "", "supervisor": "LUIS AGUANAR", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "DANIEL ZAPATA", "dni": "45084594", "supervisor": "KENNETH CUBA", "faltas_dias": [], "tardanzas_dias": ["07"], "tardanza_tiempos": {"07": "0.008807870037037036"}}, {"nombre": "DAVID SANCHEZ", "dni": "72716299", "supervisor": "KENNETH CUBA", "faltas_dias": [], "tardanzas_dias": ["07"], "tardanza_tiempos": {"07": "0.00497685151851851"}}, {"nombre": "DEISY LLONTOP", "dni": "", "supervisor": "ANITA AGAMA", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "DEYANIRA DEL POZO", "dni": "", "supervisor": "LUIS AGUANAR", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "ERICK PORTILLA", "dni": "", "supervisor": "BRYAN VELASQUEZ", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "ERIKA PANTA", "dni": "62792399", "supervisor": "KENNETH CUBA", "faltas_dias": [], "tardanzas_dias": ["07"], "tardanza_tiempos": {"07": "0.0018055552222221993"}}, {"nombre": "EVELY TENORIO", "dni": "70551168", "supervisor": "SANDY LOPEZ", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "FERNANDA APAZA", "dni": "73623874", "supervisor": "JOHAN MAYA", "faltas_dias": [], "tardanzas_dias": ["07"], "tardanza_tiempos": {"07": "0.0018518515185185214"}}, {"nombre": "FRANCO HUAMANI", "dni": "43614775", "supervisor": "SANDY LOPEZ", "faltas_dias": [], "tardanzas_dias": ["07"], "tardanza_tiempos": {"07": "0.0004050922592592765"}}, {"nombre": "FRANK PACORA", "dni": "48344037", "supervisor": "KENNETH CUBA", "faltas_dias": [], "tardanzas_dias": ["07"], "tardanza_tiempos": {"07": "0.006215277444444445"}}, {"nombre": "FRANKLIN SOLOGUREN", "dni": "", "supervisor": "DIEGO VASQUEZ", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "FRANS TACSI", "dni": "", "supervisor": "BRYAN VELASQUEZ", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "GENESIS PALACIOS", "dni": "75026229", "supervisor": "SANDY LOPEZ", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "GENESIS VICUNA", "dni": "45262585", "supervisor": "MELINA AYRE", "faltas_dias": [], "tardanzas_dias": ["07"], "tardanza_tiempos": {"07": "0.0003819441111110877"}}, {"nombre": "GERALDINE ARROYO", "dni": "76089925", "supervisor": "JOHAN MAYA", "faltas_dias": [], "tardanzas_dias": ["07"], "tardanza_tiempos": {"07": "0.00809027744444446"}}, {"nombre": "GERSON LAZARO", "dni": "", "supervisor": "LUIS AGUANAR", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "GIAN GOMEZ", "dni": "", "supervisor": "ANITA AGAMA", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "GIANFRANCO PINEDO", "dni": "72512391", "supervisor": "SANDY LOPEZ", "faltas_dias": [], "tardanzas_dias": ["07"], "tardanza_tiempos": {"07": "0.0008796292962963137"}}, {"nombre": "GIANNINA AGUILAR", "dni": "48584670", "supervisor": "SANDY LOPEZ", "faltas_dias": [], "tardanzas_dias": ["07"], "tardanza_tiempos": {"07": "0.008136573740740727"}}, {"nombre": "GILBERTO PURIZACA", "dni": "", "supervisor": "BRYAN VELASQUEZ", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "GINA HUAMANI", "dni": "", "supervisor": "ANITA AGAMA", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "GINA PINA", "dni": "", "supervisor": "LUIS AGUANAR", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "HAROLD FLORES", "dni": "73725129", "supervisor": "KENNETH CUBA", "faltas_dias": [], "tardanzas_dias": ["07"], "tardanza_tiempos": {"07": "0.0009722218888889023"}}, {"nombre": "HUGO YACTAYO", "dni": "", "supervisor": "GUSTAVO TORRES", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "JAIRO VILLASEVA", "dni": "", "supervisor": "GUSTAVO TORRES", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "JANETH PORTOCARRERO", "dni": "40702064", "supervisor": "JOHAN MAYA", "faltas_dias": [], "tardanzas_dias": ["07"], "tardanza_tiempos": {"07": "0.0067824070740740705"}}, {"nombre": "JEFFERSON GRADOS", "dni": "", "supervisor": "GUSTAVO TORRES", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "JENY LAZARO", "dni": "41005089", "supervisor": "KENNETH CUBA", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "JENY QUINONES", "dni": "43184866", "supervisor": "MELINA AYRE", "faltas_dias": [], "tardanzas_dias": ["07"], "tardanza_tiempos": {"07": "0.0020833330000000205"}}, {"nombre": "JESSICA MELGAREJO", "dni": "46793103", "supervisor": "SANDY LOPEZ", "faltas_dias": [], "tardanzas_dias": ["07"], "tardanza_tiempos": {"07": "0.004930555222222244"}}, {"nombre": "JHONATAN CHAVEZ", "dni": "47659267", "supervisor": "MELINA AYRE", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "JIMENA MEDINA", "dni": "70988976", "supervisor": "JOHAN MAYA", "faltas_dias": [], "tardanzas_dias": ["07"], "tardanza_tiempos": {"07": "0.004282407074074068"}}, {"nombre": "JOEL ALFARO", "dni": "", "supervisor": "BRYAN VELASQUEZ", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "JOHAN CHUQUILIN", "dni": "", "supervisor": "ANITA AGAMA", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "JORGE UGARTE", "dni": "", "supervisor": "ANITA AGAMA", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "JOSELIN MONTALVO", "dni": "73233992", "supervisor": "JOHAN MAYA", "faltas_dias": [], "tardanzas_dias": ["07"], "tardanza_tiempos": {"07": "0.009918981148148154"}}, {"nombre": "JUAN ALANOCCA", "dni": "42251780", "supervisor": "JOHAN MAYA", "faltas_dias": [], "tardanzas_dias": ["07"], "tardanza_tiempos": {"07": "0.006180555222222217"}}, {"nombre": "JUAN LOZA", "dni": "10491198", "supervisor": "KENNETH CUBA", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "JUAN VIGO", "dni": "", "supervisor": "DIEGO VASQUEZ", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "KATHERINE QUISPE", "dni": "72505926", "supervisor": "MELINA AYRE", "faltas_dias": [], "tardanzas_dias": ["07"], "tardanza_tiempos": {"07": "0.008773147814814808"}}, {"nombre": "KEILA VARGAS", "dni": "", "supervisor": "DIEGO VASQUEZ", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "KIARA CANEPA", "dni": "72733809", "supervisor": "JOHAN MAYA", "faltas_dias": [], "tardanzas_dias": ["07"], "tardanza_tiempos": {"07": "0.006076388555555534"}}, {"nombre": "LENA ALVARADO", "dni": "", "supervisor": "BRYAN VELASQUEZ", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "LISTHER QUISPE", "dni": "", "supervisor": "DIEGO VASQUEZ", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "LIXY GONZALES", "dni": "", "supervisor": "DIEGO VASQUEZ", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "LUCERO JORDAN", "dni": "73257316", "supervisor": "SANDY LOPEZ", "faltas_dias": [], "tardanzas_dias": ["07"], "tardanza_tiempos": {"07": "0.004386573740740751"}}, {"nombre": "LUIS CENTENO", "dni": "75882265", "supervisor": "KENNETH CUBA", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "LUIS VALLADARES", "dni": "72758956", "supervisor": "MELINA AYRE", "faltas_dias": [], "tardanzas_dias": ["07"], "tardanza_tiempos": {"07": "0.007812499666666639"}}, {"nombre": "LUPITA HIDALGO", "dni": "", "supervisor": "BRYAN VELASQUEZ", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "MALORY MONTEBLANCO", "dni": "72373931", "supervisor": "MELINA AYRE", "faltas_dias": [], "tardanzas_dias": ["07"], "tardanza_tiempos": {"07": "0.01048611077777778"}}, {"nombre": "MARIA HUARCAYA", "dni": "47411966", "supervisor": "KENNETH CUBA", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "MARIA TINTAYA", "dni": "71264767", "supervisor": "SANDY LOPEZ", "faltas_dias": [], "tardanzas_dias": ["07"], "tardanza_tiempos": {"07": "0.0008564811481481249"}}, {"nombre": "MAYRA AVALOS", "dni": "45119892", "supervisor": "JOHAN MAYA", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "MAYRA GONZALES", "dni": "", "supervisor": "GUSTAVO TORRES", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "MELIZA CHAVEZ", "dni": "", "supervisor": "ANITA AGAMA", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "MILAGROS OBREGON", "dni": "", "supervisor": "GUSTAVO TORRES", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "MILAGROS QUIO", "dni": "45139159", "supervisor": "KENNETH CUBA", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "MISHEL MORALES", "dni": "", "supervisor": "GUSTAVO TORRES", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "NATALIA MARIN", "dni": "71262377", "supervisor": "SANDY LOPEZ", "faltas_dias": [], "tardanzas_dias": ["07"], "tardanza_tiempos": {"07": "0.0005787033703703592"}}, {"nombre": "NOEMI CHUQUILIN", "dni": "74602206", "supervisor": "KENNETH CUBA", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "ORQUIDEA TEMOCHE", "dni": "", "supervisor": "DIEGO VASQUEZ", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "OSCAR DELGADO", "dni": "", "supervisor": "DIEGO VASQUEZ", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "PAOLA RODRIGUEZ", "dni": "", "supervisor": "DIEGO VASQUEZ", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "PATRICIA ALEGRIA", "dni": "", "supervisor": "LUIS AGUANAR", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "PATRICIA VEGA", "dni": "", "supervisor": "DIEGO VASQUEZ", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "PIERINA TESEN", "dni": "60870839", "supervisor": "SANDY LOPEZ", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "RICARDO ASCOY", "dni": "", "supervisor": "LUIS AGUANAR", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "ROBERT MILLA", "dni": "", "supervisor": "ANITA AGAMA", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "ROCIO TERRONES", "dni": "", "supervisor": "LUIS AGUANAR", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "ROMINA RUIZ", "dni": "", "supervisor": "DIEGO VASQUEZ", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "SANDRA VILLAMIL", "dni": "", "supervisor": "ANITA AGAMA", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "SANDRO RODRIGUEZ", "dni": "", "supervisor": "GUSTAVO TORRES", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "SARITA GARAY", "dni": "40318129", "supervisor": "JOHAN MAYA", "faltas_dias": [], "tardanzas_dias": ["07"], "tardanza_tiempos": {"07": "0.018923610777777766"}}, {"nombre": "SEBASTIAN BAILLY", "dni": "", "supervisor": "LUIS AGUANAR", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "SHARON CHAICO", "dni": "", "supervisor": "LUIS AGUANAR", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "SINDY MORA", "dni": "", "supervisor": "ANITA AGAMA", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "STWUAR MACURI", "dni": "76824571", "supervisor": "KENNETH CUBA", "faltas_dias": [], "tardanzas_dias": ["07"], "tardanza_tiempos": {"07": "0.001828703370370388"}}, {"nombre": "TELMO ROJAS", "dni": "", "supervisor": "LUIS AGUANAR", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "URSULA CENTENO", "dni": "10706451", "supervisor": "JOHAN MAYA", "faltas_dias": [], "tardanzas_dias": ["07"], "tardanza_tiempos": {"07": "0.0007870367037037251"}}, {"nombre": "VERONICA HUARCA", "dni": "43307898", "supervisor": "JOHAN MAYA", "faltas_dias": [], "tardanzas_dias": ["07"], "tardanza_tiempos": {"07": "0.07229166633333334"}}, {"nombre": "VERONICA TASAYCO", "dni": "40980108", "supervisor": "MELINA AYRE", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "VICTOR RAMIREZ", "dni": "60914051", "supervisor": "MELINA AYRE", "faltas_dias": [], "tardanzas_dias": ["07"], "tardanza_tiempos": {"07": "0.006817129296296298"}}, {"nombre": "WHEENY ORTEGA", "dni": "", "supervisor": "BRYAN VELASQUEZ", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "YENNIFER VASQUEZ", "dni": "", "supervisor": "LUIS AGUANAR", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}], "supervisor": [{"nombre": "ANITA AGAMA", "dni": "46124876", "supervisor": "ANITA AGAMA", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "BRYAN VELASQUEZ", "dni": "74318905", "supervisor": "BRYAN VELASQUEZ", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "DIEGO VASQUEZ", "dni": "75333296", "supervisor": "DIEGO VASQUEZ", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "GUSTAVO TORRES", "dni": "73930771", "supervisor": "GUSTAVO TORRES", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "JOHAN MAYA", "dni": "75000131", "supervisor": "JOHAN MAYA", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "KENNETH CUBA", "dni": "74122258", "supervisor": "KENNETH CUBA", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "LUIS AGUANAR", "dni": "46796397", "supervisor": "LUIS AGUANAR", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "MELINA AYRE", "dni": "70984733", "supervisor": "MELINA AYRE", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}, {"nombre": "SANDY LOPEZ", "dni": "73049631", "supervisor": "SANDY LOPEZ", "faltas_dias": [], "tardanzas_dias": [], "tardanza_tiempos": {}}], "excel_usado": "CS_AVANCE DE ASESORES.xlsx", "hoja_usada": "JULIO_2026", "dim_mes": "2026_7"};
   const PASSWORDS = {"CARTA_CDNA": "24249"};
   const ACCESS_STATE = {
@@ -1666,6 +1693,61 @@
   }
     
   function buildWordHtml(contentHtml) {
+    const isMemoWord = activeModel === 'amonestacion';
+    const pageCss = isMemoWord
+      ? [
+          '@page WordSection1 {',
+          '  size: 21cm 29.7cm;',
+          '  margin: 1.62cm 3cm 0.49cm 3cm;',
+          '  mso-page-orientation: portrait;',
+          '  mso-header-margin: 1.27cm;',
+          '  mso-footer-margin: 1.27cm;',
+          '}'
+        ].join('\n')
+      : [
+          '@page WordSection1 {',
+          '  size: 21.59cm 27.94cm;',
+          '  margin: 0cm;',
+          '  mso-page-orientation: portrait;',
+          '  mso-header-margin: 0cm;',
+          '  mso-footer-margin: 0cm;',
+          '}'
+        ].join('\n');
+
+    const hojaCss = isMemoWord
+      ? [
+          '.hoja{',
+          '  width:auto;',
+          '  min-height:0;',
+          '  height:auto;',
+          '  margin:0;',
+          '  background:#ffffff;',
+          '  padding:0;',
+          '  box-sizing:border-box;',
+          '  position:static;',
+          '  overflow:visible;',
+          '  border-radius:0;',
+          '  box-shadow:none;',
+          '  page-break-after:auto;',
+          '}'
+        ].join('\n')
+      : [
+          '.hoja{',
+          '  width:21.59cm;',
+          '  min-height:27.94cm;',
+          '  height:27.94cm;',
+          '  margin:0 auto;',
+          '  background:#fff;',
+          '  padding:3.6cm 2cm 2.5cm;',
+          '  box-sizing:border-box;',
+          '  position:relative;',
+          '  overflow:visible;',
+          '  border-radius:0;',
+          '  box-shadow:none;',
+          '  page-break-after: avoid;',
+          '}'
+        ].join('\n');
+
     return `
     <!DOCTYPE html>
     <html xmlns:o="urn:schemas-microsoft-com:office:office"
@@ -1685,13 +1767,7 @@
     </xml>
     <![endif]-->
     <style>
-    @page WordSection1 {
-      size: 21.59cm 27.94cm;
-      margin: 0cm;
-      mso-page-orientation: portrait;
-      mso-header-margin: 0cm;
-      mso-footer-margin: 0cm;
-    }
+    ${pageCss}
     
     div.WordSection1 {
       page: WordSection1;
@@ -1708,20 +1784,7 @@
       color:#222;
     }
     
-    .hoja{
-      width:21.59cm;
-      min-height:27.94cm;
-      height:27.94cm;
-      margin:0 auto;
-      background:#fff;
-      padding:3.6cm 2cm 2.5cm;
-      box-sizing:border-box;
-      position:relative;
-      overflow:visible;;
-      border-radius:0;
-      box-shadow:none;
-      page-break-after: avoid;
-    }
+    ${hojaCss}
     
     .doc-header{
       position:absolute;
@@ -1857,28 +1920,35 @@
     .memo-codigo{
       text-align:center;
       font-weight:700;
-      margin-top:40px;
-      margin-bottom:34px;
+      margin-top:8pt;
+      margin-bottom:34pt;
       font-family: Tahoma, sans-serif;
       font-size:10pt;
+      mso-line-height-rule:exactly;
+      line-height:12pt;
     }
     
     .memo-fecha{
       text-align:left;
-      margin-top:40px;
-      margin-bottom:26px;
+      margin-top:0;
+      margin-bottom:26pt;
       font-family: Tahoma, sans-serif;
       font-size:10pt;
+      font-weight:700;
+      mso-line-height-rule:exactly;
+      line-height:12pt;
     }
     
     .memo-meta{
-      margin-bottom:22px;
+      margin-bottom:22pt;
       font-family: Tahoma, sans-serif;
       font-size:10pt;
     }
     
     .memo-meta p{
-      margin:0 0 8px;
+      margin:0 0 8pt;
+      mso-line-height-rule:exactly;
+      line-height:12pt;
     }
     
     .memo-cuerpo {
@@ -1890,6 +1960,8 @@
       font-family: Calibri, sans-serif !important;
       font-size: 11pt !important;
       line-height: 1.15 !important;
+      margin:0 0 8pt !important;
+      text-align:justify;
     }
     
     .memo-firma,
@@ -1899,9 +1971,9 @@
     }
     
     .memo-cuerpo p{
-      margin:0 0 16px;
+      margin:0 0 8pt;
       text-align:justify;
-      line-height:1.19;
+      line-height:1.15;
     }
     
     .memo-firma{
@@ -1913,7 +1985,7 @@
     .firma-espacio{
       margin:0;
       line-height:1;
-      height:40px;
+      height:26pt;
     }
     
     .firma-linea-texto{
@@ -1930,13 +2002,15 @@
     }
     
     .memo-recepcion{
-      margin-top:44px;
+      margin-top:44pt;
       font-family: Tahoma, sans-serif;
       font-size:10pt;
     }
     
     .memo-recepcion p{
-      margin:0 0 10px;
+      margin:0 0 8pt;
+      mso-line-height-rule:exactly;
+      line-height:12pt;
     }
 
     .logo {
@@ -1946,7 +2020,7 @@
     
     </style>
     </head>
-    <body>
+    <body class="${isMemoWord ? 'word-memo' : 'word-cdna'}">
       <div class="WordSection1">
         ${contentHtml}
       </div>
